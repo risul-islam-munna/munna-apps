@@ -6,9 +6,6 @@
 <title>Munna Apps — useful apps and enjoyable games by Md. Risul Islam Munna</title>
 <meta name="description" content="Mobile apps and Android games by Dhaka developer Md. Risul Islam Munna. Featured app: Bahon Boi, vehicle accounts for owners in Bangladesh. Games are on games.munna.dev.">
 <link rel="canonical" href="https://apps.munna.dev/">
-<link rel="alternate" hreflang="en" href="https://apps.munna.dev/">
-<link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bn/">
-<link rel="alternate" hreflang="x-default" href="https://apps.munna.dev/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#f6f4ef">
 <meta name="author" content="Md. Risul Islam Munna">
@@ -33,11 +30,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
-<script>document.documentElement.classList.add('js')</script>
+<style>.lang-pending #lang-root{visibility:hidden;animation:lang-reveal 0s 1.5s forwards}@keyframes lang-reveal{to{visibility:visible}}</style>
+<script>(function(h){h.classList.add('js');try{var v=localStorage.getItem('munnaApps.language');if((v==='en'||v==='bn')&&v!=='en'){h.lang=v;h.classList.add('lang-pending')}}catch(e){}})(document.documentElement)</script>
 <script defer src="/assets/site.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://apps.munna.dev/#website","url":"https://apps.munna.dev/","name":"Munna Apps","inLanguage":["en","bn"]},{"@type":"Person","@id":"https://apps.munna.dev/#person","name":"Md. Risul Islam Munna","url":"https://munna.dev","jobTitle":"Full Stack Developer & DevOps Engineer","address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},"sameAs":["https://github.com/risul-islam-munna","https://www.linkedin.com/in/risul-islam-munna/","https://www.facebook.com/munna.dev.bd/"]},{"@type":"CollectionPage","url":"https://apps.munna.dev/","inLanguage":"en","relatedLink":"https://games.munna.dev","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://apps.munna.dev/bahon-boi/","name":"Bahon Boi (বাহন বই)"}]}}]}</script>
 </head>
 <body class="hub">
+<div id="lang-root" data-lang="en">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" data-header>
   <div class="wrap header-row">
@@ -52,64 +51,86 @@
       <a href="/#contact">Contact</a>
     </nav>
     <div class="header-tools">
-      <nav class="lang-switch" aria-label="Language"><a lang="bn" hreflang="bn" href="/bn/" aria-label="বাংলা" data-keep-hash>বাং</a><span aria-hidden="true">|</span><a lang="en" hreflang="en" href="/" aria-label="English" aria-current="true">EN</a></nav>
+      <div class="lang-switch" role="group" aria-label="Language"><button type="button" lang="bn" data-set-lang="bn" aria-label="বাংলা" aria-pressed="false">বাং</button><span aria-hidden="true">|</span><button type="button" lang="en" data-set-lang="en" aria-label="English" aria-pressed="true">EN</button></div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="m-open" d="M4 7h16M4 12h16M4 17h16"/><path class="m-close" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">Menu</span></button>
     </div>
   </div>
 </header>
 <main id="main">
 <section class="hub-hero" aria-labelledby="hub-title">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Munna Apps · by Md. Risul Islam Munna</p>
-      <h1 id="hub-title">Useful apps. <em>Enjoyable games.</em></h1>
-      <p class="lede">I build mobile apps that make a specific everyday job easier, and Android games with a classic, pick-up-and-play feel — each one made with care in Dhaka, Bangladesh.</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="#apps"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg> Explore apps</a>
-        <a class="btn btn-games" href="https://games.munna.dev" rel="noopener"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9h12a4 4 0 0 1 3.9 4.9l-1 4.3a2.4 2.4 0 0 1-4.2 1L15 17H9l-1.7 2.2a2.4 2.4 0 0 1-4.2-1l-1-4.3A4 4 0 0 1 6 9z"/><path d="M7.5 12v3M6 13.5h3"/><circle cx="15.5" cy="12.5" r=".6"/><circle cx="17.5" cy="14.5" r=".6"/></svg> Explore games</a>
-      </div>
-    </div>
-    <div class="portal">
-      <a class="portal-card pc-apps" href="#apps">
-        <svg class="pc-svg" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
-  <rect x="62" y="6" width="76" height="128" rx="14" class="s-phone"/>
-  <rect x="67" y="14" width="66" height="112" rx="9" class="s-screen"/>
-  <rect x="74" y="24" width="52" height="16" rx="5" class="s-accent-soft-f"/>
-  <rect x="74" y="46" width="24" height="20" rx="5" class="s-card"/>
-  <rect x="102" y="46" width="24" height="20" rx="5" class="s-card"/>
-  <path d="M80 100v-10M90 100V80M100 100v-14M110 100V74M120 100v-8" class="pc-bars"/>
-  <rect x="74" y="108" width="52" height="8" rx="4" class="s-card"/>
-</svg>
-        <span class="pc-text"><b>Apps</b><span>Focused tools for real jobs</span></span>
-        <span class="pc-go">On this page <svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-      <a class="portal-card pc-games" href="https://games.munna.dev" rel="noopener">
-        <svg class="pc-svg" viewBox="0 0 200 140" aria-hidden="true" focusable="false">
-  <g class="pc-bricks">
-    <rect x="36" y="10" width="28" height="11" rx="3"/><rect x="68" y="10" width="28" height="11" rx="3"/><rect x="100" y="10" width="28" height="11" rx="3"/><rect x="132" y="10" width="28" height="11" rx="3"/>
-    <rect x="52" y="25" width="28" height="11" rx="3"/><rect x="116" y="25" width="28" height="11" rx="3"/>
-  </g>
-  <circle cx="98" cy="50" r="5" class="pc-ball"/>
-  <path d="M60 66h80a26 26 0 0 1 25 33l-6 22a12 12 0 0 1-21 4l-12-15H74l-12 15a12 12 0 0 1-21-4l-6-22a26 26 0 0 1 25-33z" class="pc-pad"/>
-  <path d="M66 86v18M57 95h18" class="pc-dpad"/>
-  <circle cx="136" cy="88" r="5" class="pc-b1"/><circle cx="148" cy="99" r="5" class="pc-b2"/><circle cx="124" cy="99" r="5" class="pc-b3"/>
-</svg>
-        <span class="pc-text"><b>Games</b><span>Android games, just for fun</span></span>
-        <span class="pc-go" lang="en">games.munna.dev <svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
-<section class="section-tight" aria-labelledby="games-title">
   <div class="wrap">
-    <div class="games-band">
-      <span class="ico big gb-ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9h12a4 4 0 0 1 3.9 4.9l-1 4.3a2.4 2.4 0 0 1-4.2 1L15 17H9l-1.7 2.2a2.4 2.4 0 0 1-4.2-1l-1-4.3A4 4 0 0 1 6 9z"/><path d="M7.5 12v3M6 13.5h3"/><circle cx="15.5" cy="12.5" r=".6"/><circle cx="17.5" cy="14.5" r=".6"/></svg></span>
-      <div class="gb-text">
-        <p class="eyebrow">Games</p>
-        <h2 id="games-title">I make games too</h2>
-        <p>Alongside apps, I develop a small, growing collection of Android games. They have their own website, with a page for each game.</p>
+    <div class="hx-intro">
+      <div class="hx-head">
+        <p class="eyebrow">Munna Apps · Apps and games by Risul Islam Munna</p>
+        <h1 id="hub-title"><span><em class="hx-a">Simpler</em> everyday tasks.</span> <span><em class="hx-g">More enjoyable</em> downtime.</span></h1>
       </div>
-      <a class="btn btn-games" href="https://games.munna.dev" rel="noopener">Visit the games website <svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+      <div class="hx-copy">
+        <p class="lede">I build apps that turn complicated routines and scattered information into clear, manageable steps — and games made for a quick break, a satisfying challenge or, where a game supports it, time with friends.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#apps"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg> Explore apps</a>
+          <a class="btn btn-games" href="https://games.munna.dev" rel="noopener"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9h12a4 4 0 0 1 3.9 4.9l-1 4.3a2.4 2.4 0 0 1-4.2 1L15 17H9l-1.7 2.2a2.4 2.4 0 0 1-4.2-1l-1-4.3A4 4 0 0 1 6 9z"/><path d="M7.5 12v3M6 13.5h3"/><circle cx="15.5" cy="12.5" r=".6"/><circle cx="17.5" cy="14.5" r=".6"/></svg> Explore games</a>
+        </div>
+      </div>
+    </div>
+    <div class="hx-stage hx-anim" data-hero-stage>
+      <figure class="hx-scene hx-apps">
+        <svg class="hx-svg" viewBox="0 12 320 158" aria-hidden="true" focusable="false">
+    <g transform="translate(-22 0)">
+    <g class="hx-scraps">
+      <rect x="18" y="26" width="46" height="30" rx="6" class="hx-scrap hx-s1"/>
+      <rect x="30" y="112" width="40" height="28" rx="6" class="hx-scrap hx-s2"/>
+      <rect x="58" y="66" width="30" height="22" rx="5" class="hx-scrap hx-s3"/>
+    </g>
+    <rect x="98" y="18" width="168" height="146" rx="16" class="hx-board"/>
+    <rect x="112" y="31" width="58" height="7" rx="3.5" class="hx-title"/>
+    <circle cx="242" cy="34.5" r="4" class="hx-dot"/><circle cx="230" cy="34.5" r="4" class="hx-dot"/>
+    <g class="hx-note hx-n1">
+      <rect x="112" y="48" width="140" height="24" rx="7" class="hx-row"/>
+      <circle cx="126" cy="60" r="6.5" class="hx-check-bg"/>
+      <path d="M122.6 60.2l2.4 2.4 4.4-4.8" class="hx-check hx-c1"/>
+      <rect x="139" y="55" width="72" height="4.5" rx="2.25" class="hx-line"/>
+      <rect x="139" y="62.5" width="44" height="3.5" rx="1.75" class="hx-line hx-line-2"/>
+    </g>
+    <g class="hx-note hx-n2">
+      <rect x="112" y="79" width="140" height="24" rx="7" class="hx-row"/>
+      <circle cx="126" cy="91" r="6.5" class="hx-check-bg"/>
+      <path d="M122.6 91.2l2.4 2.4 4.4-4.8" class="hx-check hx-c2"/>
+      <rect x="139" y="86" width="58" height="4.5" rx="2.25" class="hx-line"/>
+      <rect x="139" y="93.5" width="52" height="3.5" rx="1.75" class="hx-line hx-line-2"/>
+    </g>
+    <g class="hx-note hx-n3">
+      <rect x="112" y="110" width="140" height="24" rx="7" class="hx-row"/>
+      <circle cx="126" cy="122" r="6.5" class="hx-check-bg"/>
+      <path d="M122.6 122.2l2.4 2.4 4.4-4.8" class="hx-check hx-c3"/>
+      <rect x="139" y="117" width="80" height="4.5" rx="2.25" class="hx-line"/>
+      <rect x="139" y="124.5" width="36" height="3.5" rx="1.75" class="hx-line hx-line-2"/>
+    </g>
+    <rect x="112" y="145" width="140" height="7" rx="3.5" class="hx-track"/>
+    <rect x="112" y="145" width="140" height="7" rx="3.5" class="hx-progress"/>
+    </g>
+  </svg>
+        <figcaption>
+          <b>Less complexity. More clarity.</b>
+          <span>Practical tools that bring useful information together and make everyday tasks easier to manage.</span>
+        </figcaption>
+      </figure>
+      <figure class="hx-scene hx-games">
+        <svg class="hx-svg" viewBox="0 12 320 158" aria-hidden="true" focusable="false">
+    <g class="hx-bricks"><rect x="27" y="22" width="38" height="14" rx="4" class="hx-brick-t"/><rect x="71" y="22" width="38" height="14" rx="4" class="hx-brick-a"/><rect x="115" y="22" width="38" height="14" rx="4" class="hx-brick-b"/><rect x="159" y="22" width="38" height="14" rx="4" class="hx-brick-t"/><rect x="203" y="22" width="38" height="14" rx="4" class="hx-brick-b"/><rect x="247" y="22" width="38" height="14" rx="4" class="hx-brick-a"/><rect x="27" y="40" width="38" height="14" rx="4" class="hx-brick-a"/><rect x="71" y="40" width="38" height="14" rx="4" class="hx-brick-b"/><rect x="115" y="40" width="38" height="14" rx="4" class="hx-brick-t"/><rect x="203" y="40" width="38" height="14" rx="4" class="hx-brick-a"/><rect x="247" y="40" width="38" height="14" rx="4" class="hx-brick-t"/></g>
+    <rect x="159" y="40" width="38" height="14" rx="4" class="hx-brick-a hx-target"/>
+    <g class="hx-spark"><path d="M178 34v-6M178 60v6M162 47h-6M194 47h6M167 37l-4-4M189 37l4-4M167 57l-4 4M189 57l4 4"/></g>
+    <path d="M34 116h40v13a7 7 0 1 1 0 14v13h-40z" class="hx-piece-a"/>
+    <path d="M74 116h40v40h-40v-13a7 7 0 1 0 0-14z" class="hx-piece-b"/>
+    <rect x="140" y="152" width="70" height="9" rx="4.5" class="hx-paddle"/>
+    <circle cx="175" cy="145" r="6.5" class="hx-ball"/>
+  </svg>
+        <figcaption>
+          <b>Take a break. Enjoy the moment.</b>
+          <span>A quick game, a challenge to beat or, in some games, a little friendly competition.</span>
+          <a class="hx-link" href="https://games.munna.dev" rel="noopener"><span lang="en">games.munna.dev</span> <svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+        </figcaption>
+      </figure>
+      <button class="hx-replay" type="button" data-hero-replay aria-label="Replay the animation" title="Replay the animation"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
     </div>
   </div>
 </section>
@@ -140,7 +161,7 @@
           <a class="btn btn-primary" href="/bahon-boi/"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Learn about Bahon Boi</a>
           <a class="btn btn-ghost" href="/bahon-boi/guide/">User guide</a>
         </div>
-        <p class="muted small">The Bahon Boi page opens in Bengali. <a href="/bahon-boi/en/" hreflang="en">Read it in English</a>.</p>
+        <p class="muted small">The Bahon Boi page opens in Bengali unless you have chosen English there.<span class="js-only"> <a href="/bahon-boi/" data-prefer="bahonBoi:en">Open it in English</a>.</span></p>
       </div>
       <figure class="fp-shots hero-shots">
         <div class="shots-fan"><img class="shot s-left" src="/bahon-boi/assets/screens/en-drivers.webp" width="640" height="1314" alt="Driver list with five drivers, the vehicle each one drives and masked NID and licence numbers." loading="lazy" decoding="async"><img class="shot s-center" src="/bahon-boi/assets/screens/en-dashboard.webp" width="640" height="1314" alt="Bahon Boi dashboard showing earned income, expenses, profit, money to collect and a document alert for November." loading="lazy" decoding="async"><img class="shot s-right" src="/bahon-boi/assets/screens/en-report.webp" width="640" height="1314" alt="Reports screen with a monthly income and expense chart and a profit and loss summary for the year." loading="lazy" decoding="async"></div>
@@ -180,7 +201,7 @@
     <span class="ico big"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
     <div>
       <h2 id="contact-title">Get in touch</h2>
-      <p>Questions, feedback or a problem with an app or a game? Email me. For Bahon Boi help, see its <a href="/bahon-boi/en/contact/">support page</a>; each game has its own support page on <a href="https://games.munna.dev" rel="noopener" lang="en">games.munna.dev</a>.</p>
+      <p>Questions, feedback or a problem with an app or a game? Email me. For Bahon Boi help, see its <a href="/bahon-boi/contact/">support page</a>; each game has its own support page on <a href="https://games.munna.dev" rel="noopener" lang="en">games.munna.dev</a>.</p>
     </div>
     <a class="btn btn-primary" href="mailto:hello@munna.dev">hello@munna.dev</a>
   </div>
@@ -194,13 +215,13 @@
         <p><span lang="en">Munna Apps</span></p>
       </div>
       <div><h2>Bahon Boi</h2><ul>
-      <li><a href="/bahon-boi/en/">Overview</a></li>
-      <li><a href="/bahon-boi/en/#features">Features</a></li>
-      <li><a href="/bahon-boi/en/guide/">User guide</a></li>
-      <li><a href="/bahon-boi/en/#faq">FAQ</a></li></ul></div><div><h2>Help & legal</h2><ul>
-      <li><a href="/bahon-boi/en/contact/">Contact</a></li>
-      <li><a href="/bahon-boi/en/terms/">Terms and Conditions</a></li>
-      <li><a href="/bahon-boi/en/privacy/">Privacy Policy</a></li></ul></div><div><h2>More</h2><ul>
+      <li><a href="/bahon-boi/">Overview</a></li>
+      <li><a href="/bahon-boi/#features">Features</a></li>
+      <li><a href="/bahon-boi/guide/">User guide</a></li>
+      <li><a href="/bahon-boi/#faq">FAQ</a></li></ul></div><div><h2>Help & legal</h2><ul>
+      <li><a href="/bahon-boi/contact/">Contact</a></li>
+      <li><a href="/bahon-boi/terms/">Terms and Conditions</a></li>
+      <li><a href="/bahon-boi/privacy/">Privacy Policy</a></li></ul></div><div><h2>More</h2><ul>
       <li><a href="/">All apps</a></li>
       <li><a href="https://games.munna.dev" rel="noopener">Games: games.munna.dev</a></li>
       <li><a href="mailto:hello@munna.dev">Email: hello@munna.dev</a></li>
@@ -209,5 +230,203 @@
     <p class="copy">&copy; 2026 <span lang="en">Md. Risul Islam Munna</span> · Independent apps made in Dhaka, Bangladesh.</p>
   </div>
 </footer>
+</div>
+<template id="lang-alt" data-lang="bn">
+<a class="skip-link" href="#main">মূল অংশে যান</a>
+<header class="site-header" data-header>
+  <div class="wrap header-row">
+    <a class="brand" href="/" aria-label="Munna Apps — হোম">
+      <img src="/assets/favicon.svg" width="34" height="34" alt="">
+      <b lang="en">Munna Apps</b>
+    </a>
+    <nav class="main-nav" id="site-nav" aria-label="প্রধান">
+      <a href="/#apps">অ্যাপস</a>
+      <a class="nav-ext" href="https://games.munna.dev" rel="noopener">গেমস<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a href="/#developer">ডেভেলপার</a>
+      <a href="/#contact">যোগাযোগ</a>
+    </nav>
+    <div class="header-tools">
+      <div class="lang-switch" role="group" aria-label="ভাষা"><button type="button" lang="bn" data-set-lang="bn" aria-label="বাংলা" aria-pressed="true">বাং</button><span aria-hidden="true">|</span><button type="button" lang="en" data-set-lang="en" aria-label="English" aria-pressed="false">EN</button></div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="m-open" d="M4 7h16M4 12h16M4 17h16"/><path class="m-close" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">মেনু</span></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="hub-hero" aria-labelledby="hub-title">
+  <div class="wrap">
+    <div class="hx-intro">
+      <div class="hx-head">
+        <p class="eyebrow">Munna Apps · রিসুল ইসলাম মুন্নার তৈরি অ্যাপ ও গেম</p>
+        <h1 id="hub-title"><span>দৈনন্দিন কাজ হোক <em class="hx-a">সহজ।</em></span> <span>অবসর হোক <em class="hx-g">আনন্দের।</em></span></h1>
+      </div>
+      <div class="hx-copy">
+        <p class="lede">জটিল প্রক্রিয়া সহজ করতে, ছড়িয়ে থাকা তথ্য গুছিয়ে রাখতে আর প্রয়োজনের কাজ কম ঝামেলায় সেরে নিতে অ্যাপ তৈরি করি। আর কাজের ফাঁকে নিজের মতো খেলতে কিংবা কিছু গেমে বন্ধুদের সঙ্গে সময় কাটাতে তৈরি করি উপভোগ্য গেম।</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#apps"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg> অ্যাপগুলো দেখুন</a>
+          <a class="btn btn-games" href="https://games.munna.dev" rel="noopener"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9h12a4 4 0 0 1 3.9 4.9l-1 4.3a2.4 2.4 0 0 1-4.2 1L15 17H9l-1.7 2.2a2.4 2.4 0 0 1-4.2-1l-1-4.3A4 4 0 0 1 6 9z"/><path d="M7.5 12v3M6 13.5h3"/><circle cx="15.5" cy="12.5" r=".6"/><circle cx="17.5" cy="14.5" r=".6"/></svg> গেমসের জগতে যান</a>
+        </div>
+      </div>
+    </div>
+    <div class="hx-stage hx-anim" data-hero-stage>
+      <figure class="hx-scene hx-apps">
+        <svg class="hx-svg" viewBox="0 12 320 158" aria-hidden="true" focusable="false">
+    <g transform="translate(-22 0)">
+    <g class="hx-scraps">
+      <rect x="18" y="26" width="46" height="30" rx="6" class="hx-scrap hx-s1"/>
+      <rect x="30" y="112" width="40" height="28" rx="6" class="hx-scrap hx-s2"/>
+      <rect x="58" y="66" width="30" height="22" rx="5" class="hx-scrap hx-s3"/>
+    </g>
+    <rect x="98" y="18" width="168" height="146" rx="16" class="hx-board"/>
+    <rect x="112" y="31" width="58" height="7" rx="3.5" class="hx-title"/>
+    <circle cx="242" cy="34.5" r="4" class="hx-dot"/><circle cx="230" cy="34.5" r="4" class="hx-dot"/>
+    <g class="hx-note hx-n1">
+      <rect x="112" y="48" width="140" height="24" rx="7" class="hx-row"/>
+      <circle cx="126" cy="60" r="6.5" class="hx-check-bg"/>
+      <path d="M122.6 60.2l2.4 2.4 4.4-4.8" class="hx-check hx-c1"/>
+      <rect x="139" y="55" width="72" height="4.5" rx="2.25" class="hx-line"/>
+      <rect x="139" y="62.5" width="44" height="3.5" rx="1.75" class="hx-line hx-line-2"/>
+    </g>
+    <g class="hx-note hx-n2">
+      <rect x="112" y="79" width="140" height="24" rx="7" class="hx-row"/>
+      <circle cx="126" cy="91" r="6.5" class="hx-check-bg"/>
+      <path d="M122.6 91.2l2.4 2.4 4.4-4.8" class="hx-check hx-c2"/>
+      <rect x="139" y="86" width="58" height="4.5" rx="2.25" class="hx-line"/>
+      <rect x="139" y="93.5" width="52" height="3.5" rx="1.75" class="hx-line hx-line-2"/>
+    </g>
+    <g class="hx-note hx-n3">
+      <rect x="112" y="110" width="140" height="24" rx="7" class="hx-row"/>
+      <circle cx="126" cy="122" r="6.5" class="hx-check-bg"/>
+      <path d="M122.6 122.2l2.4 2.4 4.4-4.8" class="hx-check hx-c3"/>
+      <rect x="139" y="117" width="80" height="4.5" rx="2.25" class="hx-line"/>
+      <rect x="139" y="124.5" width="36" height="3.5" rx="1.75" class="hx-line hx-line-2"/>
+    </g>
+    <rect x="112" y="145" width="140" height="7" rx="3.5" class="hx-track"/>
+    <rect x="112" y="145" width="140" height="7" rx="3.5" class="hx-progress"/>
+    </g>
+  </svg>
+        <figcaption>
+          <b>জটিলতা কমিয়ে, কাজে স্বস্তি</b>
+          <span>হিসাব রাখা থেকে প্রয়োজনীয় তথ্য এক জায়গায় পাওয়া — সহজ ব্যবহার আর পরিষ্কার তথ্যে দৈনন্দিন কাজে আরও নিয়ন্ত্রণ।</span>
+        </figcaption>
+      </figure>
+      <figure class="hx-scene hx-games">
+        <svg class="hx-svg" viewBox="0 12 320 158" aria-hidden="true" focusable="false">
+    <g class="hx-bricks"><rect x="27" y="22" width="38" height="14" rx="4" class="hx-brick-t"/><rect x="71" y="22" width="38" height="14" rx="4" class="hx-brick-a"/><rect x="115" y="22" width="38" height="14" rx="4" class="hx-brick-b"/><rect x="159" y="22" width="38" height="14" rx="4" class="hx-brick-t"/><rect x="203" y="22" width="38" height="14" rx="4" class="hx-brick-b"/><rect x="247" y="22" width="38" height="14" rx="4" class="hx-brick-a"/><rect x="27" y="40" width="38" height="14" rx="4" class="hx-brick-a"/><rect x="71" y="40" width="38" height="14" rx="4" class="hx-brick-b"/><rect x="115" y="40" width="38" height="14" rx="4" class="hx-brick-t"/><rect x="203" y="40" width="38" height="14" rx="4" class="hx-brick-a"/><rect x="247" y="40" width="38" height="14" rx="4" class="hx-brick-t"/></g>
+    <rect x="159" y="40" width="38" height="14" rx="4" class="hx-brick-a hx-target"/>
+    <g class="hx-spark"><path d="M178 34v-6M178 60v6M162 47h-6M194 47h6M167 37l-4-4M189 37l4-4M167 57l-4 4M189 57l4 4"/></g>
+    <path d="M34 116h40v13a7 7 0 1 1 0 14v13h-40z" class="hx-piece-a"/>
+    <path d="M74 116h40v40h-40v-13a7 7 0 1 0 0-14z" class="hx-piece-b"/>
+    <rect x="140" y="152" width="70" height="9" rx="4.5" class="hx-paddle"/>
+    <circle cx="175" cy="145" r="6.5" class="hx-ball"/>
+  </svg>
+        <figcaption>
+          <b>একটু বিরতি, নিজের মতো আনন্দ</b>
+          <span>ছোট বিরতিতে হালকা বিনোদন, নিজের দক্ষতার চ্যালেঞ্জ, কিংবা কিছু গেমে বন্ধুদের সঙ্গে খেলার আনন্দ।</span>
+          <a class="hx-link" href="https://games.munna.dev" rel="noopener"><span lang="en">games.munna.dev</span> <svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+        </figcaption>
+      </figure>
+      <button class="hx-replay" type="button" data-hero-replay aria-label="অ্যানিমেশন আবার দেখুন" title="অ্যানিমেশন আবার দেখুন"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+    </div>
+  </div>
+</section>
+<section class="section featured" id="apps" aria-labelledby="apps-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">অ্যাপস</p>
+      <h2 id="apps-title">প্রধান অ্যাপ</h2>
+      <p class="muted">প্রতিটি অ্যাপ একটি নির্দিষ্ট কাজের জন্য, আর প্রতিটির নিজস্ব পেজে আছে বিস্তারিত তথ্য, ব্যবহার নির্দেশিকা ও সহায়তা।</p>
+    </div>
+    <article class="feature-panel" aria-labelledby="bb-name">
+      <div class="fp-main">
+        <div class="fp-id">
+          <img src="/bahon-boi/assets/logo-320.webp" width="96" height="96" alt="বাহন বই অ্যাপের আইকন: খোলা বইয়ের ওপর একটি গাড়ি">
+          <div>
+            <h3 id="bb-name"><span lang="bn">বাহন বই</span> <span class="en" lang="en">Bahon Boi</span></h3>
+            <p class="tagline">সব বাহনের হিসাব, এক বইয়ে।</p>
+          </div>
+        </div>
+        <p>বাংলাদেশের বাহন মালিক ও ছোট পরিবহন ব্যবসার জন্য হিসাবের অ্যাপ। প্রতিটি বাহন কত আয় করল, চালক কত দিলেন ও কত বাকি, খরচ কত হলো, লাভ কত থাকল, আর কোন কাগজের মেয়াদ শেষ হচ্ছে — সব দেখায়।</p>
+        <dl class="meta-grid">
+          <div><dt>কাদের জন্য</dt><dd>বাস, কার, সিএনজি, অটোরিকশা, ট্রাক, পিকআপসহ সব বাহনের মালিক</dd></div>
+          <div><dt>প্ল্যাটফর্ম</dt><dd>Android</dd></div>
+          <div><dt>অবস্থা</dt><dd><span class="badge">শীঘ্রই আসছে</span> এখনো কোনো স্টোরে নেই</dd></div>
+          <div><dt>চলে</dt><dd>অফলাইনে, অ্যাকাউন্ট ছাড়া</dd></div>
+        </dl>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/bahon-boi/"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> বাহন বই সম্পর্কে জানুন</a>
+          <a class="btn btn-ghost" href="/bahon-boi/guide/">ব্যবহার নির্দেশিকা</a>
+        </div>
+        
+      </div>
+      <figure class="fp-shots hero-shots">
+        <div class="shots-fan"><img class="shot s-left" src="/bahon-boi/assets/screens/bn-drivers.webp" width="640" height="1314" alt="পাঁচজন চালকের তালিকা, কে কোন বাহন চালান, আর আংশিক লুকানো এনআইডি ও লাইসেন্স নম্বর।" loading="lazy" decoding="async"><img class="shot s-center" src="/bahon-boi/assets/screens/bn-dashboard.webp" width="640" height="1314" alt="বাহন বইয়ের ড্যাশবোর্ড: নভেম্বরের অর্জিত আয়, খরচ, লাভ, আদায় বাকি ও কাগজের সতর্কতা।" loading="lazy" decoding="async"><img class="shot s-right" src="/bahon-boi/assets/screens/bn-report.webp" width="640" height="1314" alt="রিপোর্টের পর্দা: মাসভিত্তিক আয়–খরচের গ্রাফ ও বছরের লাভ-ক্ষতির হিসাব।" loading="lazy" decoding="async"></div>
+        <figcaption>বর্তমান অ্যাপের আসল স্ক্রিনশট, স্বাভাবিক ব্যবহারে — কাল্পনিক উদাহরণের তথ্য দিয়ে।</figcaption>
+      </figure>
+    </article>
+  </div>
+</section>
+<section class="section section-alt" id="developer" aria-labelledby="dev-title">
+  <div class="wrap dev-grid">
+    <div>
+      <p class="eyebrow">ডেভেলপার</p>
+      <h2 id="dev-title" lang="en">Md. Risul Islam Munna</h2>
+      <p class="role">ফুল-স্ট্যাক ডেভেলপার, DevOps ইঞ্জিনিয়ার ও উদ্যোক্তা · ঢাকা, বাংলাদেশ</p>
+      <p>৭ বছরের বেশি সময় ধরে ওয়েব ও মোবাইল প্রোডাক্ট তৈরি — Laravel ব্যাকএন্ড, Vue.js ফ্রন্টএন্ড ও Flutter অ্যাপ, ক্লাউডে ডিপ্লয় ও পরিচালনাসহ। বাংলাদেশের অনলাইন ব্যবসার জন্য ই-কমার্স SaaS প্ল্যাটফর্ম Bee Hook-এর প্রতিষ্ঠাতা ও প্রধান ডেভেলপার।</p>
+      <p>এখানকার অ্যাপ ও গেমগুলো ব্যক্তিগত উদ্যোগ — ক্লায়েন্টের কাজের মতোই যত্ন নিয়ে তৈরি।</p>
+      <ul class="chips" aria-label="প্রযুক্তি"><li lang="en">Laravel</li><li lang="en">PHP</li><li lang="en">Vue.js</li><li lang="en">Flutter</li><li lang="en">Dart</li><li lang="en">MySQL</li><li lang="en">Docker</li><li lang="en">AWS</li><li lang="en">GitHub Actions</li><li lang="en">Cloudflare</li></ul>
+    </div>
+    <div class="dev-card">
+      <ul class="facts">
+        <li><b>অভিজ্ঞতা</b>৭+ বছর</li>
+        <li><b>প্রতিষ্ঠাতা</b><a href="https://beehook.app" rel="noopener">Bee Hook</a></li>
+        <li><b>অবস্থান</b>ঢাকা, বাংলাদেশ</li>
+      </ul>
+      <ul class="link-list">
+        <li><a href="https://munna.dev" rel="noopener"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg> munna.dev</a></li>
+        <li><a href="https://games.munna.dev" rel="noopener"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9h12a4 4 0 0 1 3.9 4.9l-1 4.3a2.4 2.4 0 0 1-4.2 1L15 17H9l-1.7 2.2a2.4 2.4 0 0 1-4.2-1l-1-4.3A4 4 0 0 1 6 9z"/><path d="M7.5 12v3M6 13.5h3"/><circle cx="15.5" cy="12.5" r=".6"/><circle cx="17.5" cy="14.5" r=".6"/></svg> games.munna.dev</a></li>
+        <li><a href="https://github.com/risul-islam-munna" rel="noopener"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg> GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/risul-islam-munna/" rel="noopener"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg> LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/munna.dev.bd/" rel="noopener"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg> Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="section-tight" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact-band">
+    <span class="ico big"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+    <div>
+      <h2 id="contact-title">যোগাযোগ</h2>
+      <p>কোনো অ্যাপ বা গেম নিয়ে প্রশ্ন, মতামত বা সমস্যা? ইমেইল করুন। বাহন বইয়ের সাহায্যের জন্য দেখুন <a href="/bahon-boi/contact/">যোগাযোগ পেজ</a>; প্রতিটি গেমের যোগাযোগ পেজ আছে <a href="https://games.munna.dev" rel="noopener" lang="en">games.munna.dev</a>-এ।</p>
+    </div>
+    <a class="btn btn-primary" href="mailto:hello@munna.dev">hello@munna.dev</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <img src="/assets/favicon.svg" width="40" height="40" alt="">
+        <p><span lang="en">Munna Apps</span></p>
+      </div>
+      <div><h2>বাহন বই</h2><ul>
+      <li><a href="/bahon-boi/">পরিচিতি</a></li>
+      <li><a href="/bahon-boi/#features">ফিচার</a></li>
+      <li><a href="/bahon-boi/guide/">ব্যবহার নির্দেশিকা</a></li>
+      <li><a href="/bahon-boi/#faq">প্রশ্নোত্তর</a></li></ul></div><div><h2>সাহায্য ও নীতি</h2><ul>
+      <li><a href="/bahon-boi/contact/">যোগাযোগ</a></li>
+      <li><a href="/bahon-boi/terms/">শর্তাবলি</a></li>
+      <li><a href="/bahon-boi/privacy/">গোপনীয়তা নীতি</a></li></ul></div><div><h2>আরও</h2><ul>
+      <li><a href="/">সব অ্যাপ</a></li>
+      <li><a href="https://games.munna.dev" rel="noopener">গেমস: games.munna.dev</a></li>
+      <li><a href="mailto:hello@munna.dev">ইমেইল: hello@munna.dev</a></li>
+      <li><a href="https://munna.dev" rel="noopener">ডেভেলপারের ওয়েবসাইট</a></li></ul></div>
+    </div>
+    <p class="copy">&copy; ২০২৬ <span lang="en">Md. Risul Islam Munna</span> · ঢাকা, বাংলাদেশে তৈরি স্বাধীন অ্যাপ।</p>
+  </div>
+</footer>
+</template>
+<script type="application/json" id="lang-data">{"scope":"munnaApps","key":"munnaApps.language","def":"en","keys":{"munnaApps":"munnaApps.language","bahonBoi":"bahonBoi.language"},"meta":{"en":{"title":"Munna Apps — useful apps and enjoyable games by Md. Risul Islam Munna","description":"Mobile apps and Android games by Dhaka developer Md. Risul Islam Munna. Featured app: Bahon Boi, vehicle accounts for owners in Bangladesh. Games are on games.munna.dev.","locale":"en_US","image":"https://apps.munna.dev/assets/og-cover.png"},"bn":{"title":"Munna Apps — কাজের অ্যাপ ও আনন্দের গেম | Md. Risul Islam Munna","description":"ঢাকার ডেভেলপার Md. Risul Islam Munna-এর মোবাইল অ্যাপ ও অ্যান্ড্রয়েড গেম। প্রধান অ্যাপ: বাহন বই — বাহন মালিকদের হিসাবের অ্যাপ। গেমগুলো games.munna.dev-এ।","locale":"bn_BD","image":"https://apps.munna.dev/assets/og-cover-bn.png"}}}</script>
+<script src="/assets/lang.js"></script>
 </body>
 </html>

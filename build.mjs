@@ -11,8 +11,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { LANGS, SITE } from './src/lib.mjs';
-import { HUB, APP, appPath, guidePath, GUIDE_TOPICS } from './src/routes.mjs';
-import { page } from './src/layout.mjs';
+import { HUB, APP, appPath, guidePath, GUIDE_TOPICS, LEGACY, SCOPES } from './src/routes.mjs';
+import { page, region, legacyRedirect } from './src/layout.mjs';
 import { hubPage } from './src/pages/hub.mjs';
 import { appPage } from './src/pages/app.mjs';
 import { guideIndex, guideTopic } from './src/pages/guide.mjs';
@@ -22,57 +22,65 @@ const ROOT = dirname(fileURLToPath(import.meta.url));
 const TODAY = new Date().toISOString().slice(0, 10);
 
 // ------------------------------------------------------------------ route table
+// One canonical URL per page. Each page is rendered in both languages into the
+// same file; the area decides the language scope and default (src/routes.mjs AREAS).
 const pages = [];
-const add = (area, paths, make, indexable = true) => pages.push({ area, paths, make, indexable });
+const add = (area, path, make, indexable = true) => pages.push({ area, path, make, indexable });
 
 add('hub', HUB, hubPage);
 add('app', APP, appPage);
-add('app', { en: guidePath('en'), bn: guidePath('bn') }, guideIndex);
-for (const slug of GUIDE_TOPICS) add('app', { en: guidePath('en', slug), bn: guidePath('bn', slug) }, (l) => guideTopic(l, slug));
-add('app', { en: appPath('en', 'contact'), bn: appPath('bn', 'contact') }, contactPage);
-add('app', { en: appPath('en', 'terms'), bn: appPath('bn', 'terms') }, termsPage, false);
-add('app', { en: appPath('en', 'privacy'), bn: appPath('bn', 'privacy') }, privacyPage, false);
+add('app', guidePath(), guideIndex);
+for (const slug of GUIDE_TOPICS) add('app', guidePath(slug), (l) => guideTopic(l, slug));
+add('app', appPath('contact'), contactPage);
+add('app', appPath('terms'), termsPage, false);
+add('app', appPath('privacy'), privacyPage, false);
 
 // ------------------------------------------------------------------ write
 const written = new Set();
+const regions = new Map(); // file → { en, bn } rendered language regions (for checks)
+const legacyFiles = new Set();
+const fileOf = (urlPath) => join(ROOT, urlPath.endsWith('/') ? urlPath + 'index.html' : urlPath);
 function write(urlPath, html) {
-  const file = join(ROOT, urlPath.endsWith('/') ? urlPath + 'index.html' : urlPath);
+  const file = fileOf(urlPath);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, html);
   written.add(file);
+  return file;
 }
 
 for (const p of pages) {
-  for (const lang of LANGS) {
-    const c = p.make(lang);
-    write(p.paths[lang], page({ lang, area: p.area, paths: p.paths, ...c }));
-  }
+  const langs = Object.fromEntries(LANGS.map((lang) => [lang, p.make(lang)]));
+  const file = write(p.path, page({ area: p.area, path: p.path, langs }));
+  regions.set(file, Object.fromEntries(LANGS.map((lang) => [lang, region(lang, p.area, langs[lang])])));
+}
+// Old language-specific URLs: tiny redirect stubs (save the language, then
+// location.replace to the canonical page, keeping ?query and #hash).
+for (const [from, to, scope, lang] of LEGACY) {
+  if (!pages.some((p) => p.path === to)) throw new Error(`Legacy ${from} points to unknown page ${to}`);
+  if (pages.some((p) => p.path === from)) throw new Error(`Legacy ${from} is also a content page`);
+  legacyFiles.add(write(from, legacyRedirect(from, to, SCOPES[scope].storageKey, lang)));
 }
 write('/404.html', notFoundHtml());
 
-// sitemap with hreflang alternates (indexable pages only)
+// sitemap: each canonical content page once (indexable pages only)
 const urls = pages
   .filter((p) => p.indexable)
-  .flatMap((p) =>
-    LANGS.map(
-      (lang) => `  <url>
-    <loc>${SITE + p.paths[lang]}</loc>
+  .map(
+    (p) => `  <url>
+    <loc>${SITE + p.path}</loc>
     <lastmod>${TODAY}</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="${SITE + p.paths.en}"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="${SITE + p.paths.bn}"/>
   </url>`,
-    ),
   );
 writeFileSync(
   join(ROOT, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.join('\n')}
   <!-- Terms and Privacy are drafts (noindex); add them here once final. -->
 </urlset>
 `,
 );
-console.log(`Built ${written.size} HTML files + sitemap.xml (${urls.length} URLs).`);
+console.log(`Built ${written.size} HTML files (${pages.length} pages, ${legacyFiles.size} legacy redirects, 404) + sitemap.xml (${urls.length} URLs).`);
 
 // ------------------------------------------------------------------ app config
 // /app-config/*.json are hand-edited static files the apps read for update
@@ -135,55 +143,74 @@ if (process.argv.includes('--check')) {
     });
   for (const f of walk(ROOT)) if (!written.has(f)) err(`stray HTML not produced by the build: ${f.slice(ROOT.length)}`);
 
-  const fileFor = (u) => join(ROOT, u.endsWith('/') ? u + 'index.html' : u);
   const ids = new Map();
+  const idsIn = (html) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
+  // ids of what a visitor sees by default (the template is inert)
   const idsOf = (file) => {
-    if (!ids.has(file)) ids.set(file, new Set([...readFileSync(file, 'utf8').matchAll(/\sid="([^"]+)"/g)].map((m) => m[1])));
+    if (!ids.has(file)) {
+      const r = regions.get(file);
+      ids.set(file, r ? idsIn(r.en) : idsIn(readFileSync(file, 'utf8')));
+    }
     return ids.get(file);
   };
+  const LEGACY_PREFIX = /^\/(bn|bahon-boi\/en)\//;
 
-  const ALLOW_LATIN_BN = /^(Bahon|Boi|Google|Play|Android|bKash|Nagad|Rocket|Md|Risul|Islam|Munna|hello|munna|dev|apps|com|English|Bee|Hook|GitHub|LinkedIn|Facebook|SaaS|DevOps|Laravel|PHP|Vue|js|Flutter|Dart|MySQL|Docker|AWS|Actions|Cloudflare|Sheets|Drive|BahonBoi|Backups|attachments|TODO|Play Console|Console|Target|audience|and|content|manifest|merged|Android|permission|NID|PDF|CNG|Files|ID|app|beehook|games|Fable|www|https|http)$/i;
-
-  for (const file of written) {
-    const html = readFileSync(file, 'utf8');
-    const rel = file.slice(ROOT.length);
-    // internal links and assets
-    for (const m of html.matchAll(/\s(?:href|src)="(\/[^"]*)"/g)) {
-      const [path, hash] = m[1].split('#');
-      const clean = path.split('?')[0];
-      const target = fileFor(clean);
-      if (!existsSync(target)) { err(`${rel}: broken link ${m[1]}`); continue; }
-      if (hash && target.endsWith('.html') && !idsOf(target).has(hash)) err(`${rel}: missing anchor ${m[1]}`);
-    }
-    for (const m of html.matchAll(/\shref="#([^"]+)"/g)) if (!idsOf(file).has(m[1])) err(`${rel}: missing same-page anchor #${m[1]}`);
-    // duplicate ids
-    const all = [...html.matchAll(/\sid="([^"]+)"/g)].map((x) => x[1]);
-    const dup = all.filter((x, i) => all.indexOf(x) !== i);
-    if (dup.length) err(`${rel}: duplicate ids ${[...new Set(dup)].join(', ')}`);
-
-    if (rel === '/404.html') continue;
-    const lang = html.match(/<html lang="(\w+)"/)[1];
-    // visible text only, without elements explicitly marked with another lang
-    const text = html
+  const ALLOW_LATIN_BN = /^(Bahon|Boi|Google|Play|Android|bKash|Nagad|Rocket|Md|Risul|Islam|Munna|hello|munna|dev|apps|com|English|Bee|Hook|GitHub|LinkedIn|Facebook|SaaS|DevOps|Laravel|PHP|Vue|js|Flutter|Dart|MySQL|Docker|AWS|Actions|Cloudflare|Sheets|Drive|BahonBoi|Backups|attachments|TODO|Play Console|Console|Target|audience|and|content|manifest|merged|Android|permission|NID|PDF|CNG|Files|ID|app|beehook|games|Fable|www|https|http|EN)$/i;
+  const visibleText = (html, lang) =>
+    html
       .replace(/<script[\s\S]*?<\/script>/g, ' ')
-      .replace(/<head>[\s\S]*?<\/head>/, ' ')
-      .replace(/<html[^>]*>/, ' ')
-      .replace(/<(\w+)[^>]*\slang="(?!LANG)[a-z]+"[^>]*>[\s\S]*?<\/\1>/g, (s) => (s.includes(`lang="${lang}"`) ? s : ' '))
+      .replace(/<(\w+)[^>]*\slang="[a-z]+"[^>]*>[\s\S]*?<\/\1>/g, (s) => (s.match(/^<\w+[^>]*\slang="([a-z]+)"/)[1] === lang ? s : ' '))
       .replace(/<title[\s\S]*?<\/title>/g, ' ')
-      .replace(/<desc[\s\S]*?<\/desc>/g, (s) => s) // keep SVG descriptions: they must be translated too
       .replace(/<[^>]+>/g, ' ')
       .replace(/&[a-z#0-9]+;/g, ' ');
+  const leaks = (rel, text, lang) => {
     if (lang === 'bn') {
       const latin = [...text.matchAll(/[A-Za-z][A-Za-z'’.-]*/g)]
         .map((x) => x[0].replace(/[.'’-]+$/, ''))
         .filter((w) => w && !w.includes('.') && !ALLOW_LATIN_BN.test(w));
-      if (latin.length) warn(`${rel}: Latin words in Bengali page: ${[...new Set(latin)].slice(0, 15).join(', ')}`);
+      if (latin.length) warn(`${rel} [bn]: Latin words in Bengali text: ${[...new Set(latin)].slice(0, 15).join(', ')}`);
     } else {
       const bn = [...text.replace(/৳/g, ' ').matchAll(/[ঀ-৿][ঀ-৿ ]*/g)]
         .map((x) => x[0].trim())
-        .filter((w) => w && !['বাংলা', 'বাহন বই'].includes(w));
-      if (bn.length) warn(`${rel}: Bengali text in English page: ${[...new Set(bn)].slice(0, 10).join(' | ')}`);
+        .filter((w) => w && !['বাংলা', 'বাহন বই', 'বাং'].includes(w));
+      if (bn.length) warn(`${rel} [en]: Bengali text in English text: ${[...new Set(bn)].slice(0, 10).join(' | ')}`);
     }
+  };
+
+  for (const file of written) {
+    const html = readFileSync(file, 'utf8');
+    const rel = file.slice(ROOT.length);
+    // internal links and assets (both languages)
+    for (const m of html.matchAll(/\s(?:href|src)="(\/[^"]*)"/g)) {
+      const [path, hash] = m[1].split('#');
+      const clean = path.split('?')[0];
+      if (!legacyFiles.has(file) && LEGACY_PREFIX.test(clean)) err(`${rel}: link to an old language URL ${m[1]}`);
+      const target = fileOf(clean);
+      if (!existsSync(target)) { err(`${rel}: broken link ${m[1]}`); continue; }
+      if (hash && target.endsWith('.html') && !idsOf(target).has(hash)) err(`${rel}: missing anchor ${m[1]}`);
+    }
+    if (/hreflang=/.test(html)) err(`${rel}: hreflang alternates are not used (one URL per page)`);
+    const r = regions.get(file);
+    if (!r) continue; // legacy stubs and 404
+    if (!/<link rel="canonical" href="https:\/\/apps\.munna\.dev\//.test(html)) err(`${rel}: canonical missing`);
+    const idSets = {};
+    for (const lang of LANGS) {
+      const part = r[lang];
+      const all = [...part.matchAll(/\sid="([^"]+)"/g)].map((x) => x[1]);
+      const dup = all.filter((x, i) => all.indexOf(x) !== i);
+      if (dup.length) err(`${rel} [${lang}]: duplicate ids ${[...new Set(dup)].join(', ')}`);
+      idSets[lang] = new Set(all);
+      for (const m of part.matchAll(/\shref="#([^"]+)"/g)) if (!idSets[lang].has(m[1])) err(`${rel} [${lang}]: missing same-page anchor #${m[1]}`);
+      leaks(rel, visibleText(part, lang), lang);
+    }
+    // Stable section ids across languages (SVG-internal <title>/<desc> ids are exempt).
+    const outside = (lang) => idsIn(r[lang].replace(/<svg[\s\S]*?<\/svg>/g, ''));
+    const se = outside('en'), sb = outside('bn');
+    const onlyEn = [...se].filter((x) => !sb.has(x));
+    const onlyBn = [...sb].filter((x) => !se.has(x));
+    if (onlyEn.length || onlyBn.length) err(`${rel}: section ids differ between languages (en only: ${onlyEn.join(', ')}; bn only: ${onlyBn.join(', ')})`);
+    // page-level ids (outside the language regions) must not clash with region ids
+    for (const x of ['lang-root', 'lang-alt', 'lang-data']) if (idSets.en.has(x)) err(`${rel}: reserved id ${x} used in content`);
   }
   console.log(`Checks: ${errors} error(s), ${warnings} warning(s).`);
   if (errors) process.exit(1);

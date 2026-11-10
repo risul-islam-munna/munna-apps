@@ -1,184 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://apps.munna.dev/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bn/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bn/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bn/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/getting-started/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/getting-started/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/getting-started/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/getting-started/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/getting-started/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/getting-started/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/vehicles-owners/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/vehicles-owners/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/vehicles-owners/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/vehicles-owners/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/vehicles-owners/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/vehicles-owners/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/drivers/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/drivers/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/drivers/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/drivers/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/drivers/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/drivers/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/income/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/income/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/income/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/income/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/income/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/income/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/money-received/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/money-received/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/money-received/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/money-received/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/money-received/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/money-received/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/expenses/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/expenses/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/expenses/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/expenses/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/expenses/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/expenses/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/rent-adjustments/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/rent-adjustments/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/rent-adjustments/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/rent-adjustments/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/rent-adjustments/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/rent-adjustments/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/profit-and-cash/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/profit-and-cash/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/profit-and-cash/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/profit-and-cash/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/profit-and-cash/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/profit-and-cash/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/reports/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/reports/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/reports/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/reports/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/reports/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/reports/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/documents/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/documents/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/documents/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/documents/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/documents/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/documents/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/guide/backup-restore/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/backup-restore/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/backup-restore/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/guide/backup-restore/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/guide/backup-restore/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/guide/backup-restore/"/>
-  </url>
-  <url>
-    <loc>https://apps.munna.dev/bahon-boi/en/contact/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/contact/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/contact/"/>
   </url>
   <url>
     <loc>https://apps.munna.dev/bahon-boi/contact/</loc>
     <lastmod>2026-11-10</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/contact/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/contact/"/>
   </url>
   <!-- Terms and Privacy are drafts (noindex); add them here once final. -->
 </urlset>

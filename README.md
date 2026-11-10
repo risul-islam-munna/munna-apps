@@ -7,26 +7,54 @@ No backend, no database, no runtime translation, and no web version of any app.
 
 ## Routes and language rules
 
-| Page | English | বাংলা |
-|---|---|---|
-| Hub | **`/`** (default) | `/bn/` |
-| Bahon Boi landing | `/bahon-boi/en/` | **`/bahon-boi/`** (default) |
-| Guide index / topics | `/bahon-boi/en/guide/`, `/bahon-boi/en/guide/<topic>/` | `/bahon-boi/guide/`, `/bahon-boi/guide/<topic>/` |
-| Contact / Terms / Privacy | `/bahon-boi/en/{contact,terms,privacy}/` | `/bahon-boi/{contact,terms,privacy}/` |
-| 404 | `/404.html` (both languages on one page — GitHub Pages serves one 404) | |
+One canonical URL per page; both languages live in the same file. Each area has its own language
+scope (`src/routes.mjs` → `SCOPES` / `AREAS`, passed to `page()` in `src/layout.mjs`):
 
-- Every URL renders exactly its own language. Browser language and saved preferences never redirect.
-- The compact header switch `বাং | EN` (accessible names “বাংলা” / “English”) links to the same page in
-  the other language (and keeps the open `#section` when JavaScript is available).
-- "Learn about Bahon Boi" on the hub always opens the Bengali page `/bahon-boi/`.
-- Hub = portfolio introduction (apps + games), not a Bahon Boi page: hero "Useful apps. Enjoyable games." /
-  "কাজের অ্যাপ, আনন্দের গেম।" with *Explore apps* (`#apps`) and *Explore games* (`GAMES_URL` =
-  `https://games.munna.dev`, in `src/routes.mjs`), a games gateway band, the featured Bahon Boi panel
-  (screenshots live there now), developer, contact. Games content and game pages stay on games.munna.dev —
-  no catalog here. Only add an app card for an app with a verified name, icon, destination and status.
-- Inside Bahon Boi, every link keeps the current language. "All apps" goes to `/` (en) or `/bn/` (bn).
-- Each page has `lang`, its own title/description, canonical, reciprocal `hreflang` (+ `x-default`)
-  and a language-specific OG image. Earlier URLs (`/`, `/bahon-boi/…`) are unchanged.
+| Page | Canonical URL | Scope (localStorage key) | Default |
+|---|---|---|---|
+| Hub | `/` | `munnaApps.language` | English |
+| Bahon Boi landing | `/bahon-boi/` | `bahonBoi.language` | বাংলা |
+| Guide index / topics | `/bahon-boi/guide/`, `/bahon-boi/guide/<topic>/` | `bahonBoi.language` | বাংলা |
+| Contact / Terms / Privacy | `/bahon-boi/{contact,terms,privacy}/` | `bahonBoi.language` | বাংলা |
+| 404 | `/404.html` (both languages side by side — GitHub Pages serves one 404) | — | — |
+
+- Static HTML holds the **default language** (what crawlers, social previews and no-JS visitors get:
+  title, description, OG/Twitter, JSON-LD, canonical). The other language is an inert
+  `<template id="lang-alt">`; `assets/lang.js` (loaded at the end of `<body>`, not deferred) swaps it
+  in when the visitor's saved choice for that scope differs, and on `বাং | EN` clicks. A tiny inline
+  `<head>` script hides `#lang-root` while a non-default saved language is applied (1.5 s CSS fallback).
+- Switching never changes the path, `?query` or `#hash`; the section at the top of the view stays in
+  place, focus returns to the new language button, `<html lang>`, title, description, OG/Twitter text and
+  OG image are updated, and `site.js` re-binds (header fit, menu, scroll spy, animations) on `langchange`.
+- Browser language is never used. Blocked/unavailable localStorage: the switch works for the current page
+  only; other pages show their defaults. Without JavaScript the switch is hidden and links work normally.
+- The scopes are independent: choosing English in Bahon Boi does not change the hub, and vice versa.
+  The hub's "Open it in English" link (`data-prefer="bahonBoi:en"`, JS only) saves the Bahon Boi
+  preference before opening `/bahon-boi/`.
+- Section ids are identical in both languages (the build fails otherwise; SVG `<title>/<desc>` ids exempt).
+- **One URL means no separate indexing or shareable link per language** — by design.
+- Legacy URLs (`LEGACY` in `src/routes.mjs`) are ~0.7 KB redirect stubs, not content pages: `/bn/` → `/`
+  (saves `munnaApps.language=bn`); `/bahon-boi/en/`, `/bahon-boi/en/guide/…`,
+  `/bahon-boi/en/{contact,terms,privacy}/` → the same path without `en/` (saves `bahonBoi.language=en`).
+  They use `location.replace` keeping `?query` and `#hash`, have `noindex` + canonical, a `<noscript>`
+  meta refresh and a plain link; they never redirect to themselves. The build fails on any internal
+  link to a legacy path.
+- Hub = portfolio introduction (apps + games), not a Bahon Boi page. Hero (2026-11-11): headline
+  "Simpler everyday tasks. More enjoyable downtime." / "দৈনন্দিন কাজ হোক সহজ। অবসর হোক আনন্দের।",
+  *Explore apps* (`#apps`) and *Explore games* (`GAMES_URL` = `https://games.munna.dev`), then one stage
+  (`.hx-stage`) with two original inline-SVG scenes and HTML captions: **apps** — loose notes settle into a
+  tidy checked list with a progress bar (illustrative, no data); **games** — a ball knocks out one brick
+  (small sparkle), a puzzle piece snaps in, the paddle slides under the ball. The games caption links to
+  games.munna.dev; the separate "I make games too" banner was removed (it repeated the hero).
+  Animation: CSS only, ~3.6 s once (`.hx-anim`), transforms/opacity, no loops; the static final state is
+  the default (reduced motion, no animation support, and after a language switch — `site.js` drops
+  `.hx-anim`). A replay button (JS only, hidden with reduced motion) restarts it. "With friends" copy is
+  limited to "some games" (verified: Dual Play pass-and-play / paired devices in supported games).
+  Then the featured Bahon Boi panel (screenshots), developer, contact. Games content stays on
+  games.munna.dev — no catalog here. Only add an app card for an app with a verified name, icon,
+  destination and status.
+- Bahon Boi app (`lib/app/site_links.dart`) opens the canonical `/bahon-boi/…` URLs for both app languages;
+  the app language is not passed to the browser.
 
 ## Project structure
 
@@ -34,14 +62,14 @@ No backend, no database, no runtime translation, and no web version of any app.
 build.mjs                 generator + checks (node build.mjs --check)
 src/
   lib.mjs                 L(en, bn) bilingual strings, money/digit formatting, checks
-  routes.mjs              route table and language rules
-  layout.mjs              <head>, header with language switch, footer
+  routes.mjs              canonical routes, language scopes/defaults, legacy redirects
+  layout.mjs              <head>, header with language switch, footer, both-language page, redirect stubs
   components.mjs          icons, example cards, breadcrumbs, link pills
   svg.mjs                 original inline SVG illustrations (theme-aware, translated labels)
   examples.mjs            accounting examples — computed and asserted at build time
   content/guide.mjs       the 11 guide topics (EN + BN)
   pages/hub.mjs  app.mjs  guide.mjs  legal.mjs   (legal.mjs also has contact + 404)
-assets/                   site.css (design system), site.js (optional enhancements), hub icons, OG covers
+assets/                   site.css (design system), lang.js (language switch), site.js (optional enhancements), hub icons, OG covers
 bahon-boi/assets/         app icon sizes, favicon, logo-320.webp, OG covers (bn default, -en)
 docs/FEATURE_COVERAGE.md  feature → page → app-source checklist (internal)
 app-config/               hand-edited update config the apps fetch (validated by the build) — see app-config/README.md
@@ -64,8 +92,9 @@ Herd quirks (production behaves correctly): unknown paths fall back to the home 
 `404.html`, and macOS file names are case-insensitive. For production-like behaviour use
 `python3 -m http.server 8766` and open `http://localhost:8766/`.
 
-`--check` fails on broken internal links/assets, missing `#anchors`, duplicate ids or stray HTML,
-and warns about English text in Bengali pages or Bengali text in English pages.
+`--check` fails on broken internal links/assets, missing `#anchors`, duplicate ids (per language),
+section ids that differ between languages, links to legacy language URLs, `hreflang`, or stray HTML,
+and warns about English text in the Bengali version or Bengali text in the English version of a page.
 
 ## Editing content
 
@@ -107,7 +136,7 @@ and rebuild.
 ## Header and navigation
 
 - One row: brand · navigation · `বাং | EN` + menu button. `assets/site.js` measures whether the row
-  fits (in the page's own language and fonts) and switches to the menu button before anything
+  fits (in the current language and fonts; re-measured after a language switch) and switches to the menu button before anything
   wraps; measured collapse points: hub ≈ 630–640 px (with the external *Games ↗* link), Bahon Boi ≈ 690 px (en) / 730 px (bn). Without
   JavaScript the nav wraps under the brand instead. The menu supports Escape, focus return and
   `aria-expanded`/`aria-controls`.
@@ -120,7 +149,8 @@ and rebuild.
 
 ## Adding another app
 
-1. Add routes in `src/routes.mjs` (e.g. `/<slug>/` default language, `/<slug>/en/`).
+1. Add routes in `src/routes.mjs` (one canonical `/<slug>/…`), plus a scope in `SCOPES` and an area in
+   `AREAS` (its own storage key and default language).
 2. Create `src/pages/<slug>.mjs` (+ its own legal/contact text — never reuse another app's policy).
 3. Register the pages in `build.mjs`, add assets under `/<slug>/assets/`, a card on the hub, and
    an accent class in `site.css`.

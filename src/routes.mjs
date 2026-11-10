@@ -1,14 +1,16 @@
-// Route table. Language rules:
-//  - Hub: English at "/", Bengali at "/bn/".
-//  - Bahon Boi: Bengali at "/bahon-boi/…", English at "/bahon-boi/en/…".
-// Explicit URLs always render their own language; nothing redirects by browser language.
+// Route table. One canonical URL per page; both languages are served from it.
+//  - The language shown is chosen in the browser (assets/lang.js) from the
+//    visitor's saved choice for that page's language scope, else the scope's
+//    default. Nothing reads the browser language; nothing adds ?lang or #lang.
+//  - Old language-specific URLs (/bn/, /bahon-boi/en/…) are kept as tiny
+//    redirect stubs (LEGACY below), not as content pages.
 
 import { L } from './lib.mjs';
 
-export const HUB = { en: '/', bn: '/bn/' };
-export const APP = { bn: '/bahon-boi/', en: '/bahon-boi/en/' };
+export const HUB = '/';
+export const APP = '/bahon-boi/';
 
-export const appPath = (lang, sub = '') => APP[lang] + (sub ? sub.replace(/^\/|\/$/g, '') + '/' : '');
+export const appPath = (sub = '') => APP + (sub ? sub.replace(/^\/|\/$/g, '') + '/' : '');
 
 export const GUIDE_TOPICS = [
   'getting-started',
@@ -24,7 +26,31 @@ export const GUIDE_TOPICS = [
   'backup-restore',
 ];
 
-export const guidePath = (lang, slug) => appPath(lang, slug ? `guide/${slug}` : 'guide');
+export const guidePath = (slug) => appPath(slug ? `guide/${slug}` : 'guide');
+
+// Language scopes: each area keeps its own saved preference and default.
+export const SCOPES = {
+  munnaApps: { storageKey: 'munnaApps.language', defaultLanguage: 'en' },
+  bahonBoi: { storageKey: 'bahonBoi.language', defaultLanguage: 'bn' },
+};
+// Page area → layout configuration (scope + default language).
+export const AREAS = {
+  hub: { languageScope: 'munnaApps', defaultLanguage: SCOPES.munnaApps.defaultLanguage },
+  app: { languageScope: 'bahonBoi', defaultLanguage: SCOPES.bahonBoi.defaultLanguage },
+};
+
+// Legacy language URLs → [canonical path, scope, language they stood for].
+export const LEGACY = [
+  ['/bn/', HUB, 'munnaApps', 'bn'],
+  ['/bahon-boi/en/', APP, 'bahonBoi', 'en'],
+  ['/bahon-boi/en/guide/', guidePath(), 'bahonBoi', 'en'],
+  ...GUIDE_TOPICS.map((s) => [`/bahon-boi/en/guide/${s}/`, guidePath(s), 'bahonBoi', 'en']),
+  ...['contact', 'terms', 'privacy'].map((k) => [`/bahon-boi/en/${k}/`, appPath(k), 'bahonBoi', 'en']),
+];
+
+// Dedicated games website (separate project). The hub links to it; game
+// content and game pages stay there.
+export const GAMES_URL = 'https://games.munna.dev';
 
 export const NAV_LABELS = {
   features: L('Features', 'ফিচার'),
@@ -38,7 +64,3 @@ export const NAV_LABELS = {
   developer: L('Developer', 'ডেভেলপার'),
   games: L('Games', 'গেমস'),
 };
-
-// Dedicated games website (separate project). The hub links to it; game
-// content and game pages stay there.
-export const GAMES_URL = 'https://games.munna.dev';

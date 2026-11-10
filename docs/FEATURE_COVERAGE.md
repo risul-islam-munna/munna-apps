@@ -11,7 +11,7 @@ Sources (paths in the app repo):
 - **R** = `PROJECT_REPORT.md` (§2 feature status, §3 screens, §8 accounting rules, §11 Google, §16 limitations)
 - **P** = `pubspec.yaml`, `android/app/src/main/AndroidManifest.xml`, `res/xml/backup_rules.xml`, `res/xml/data_extraction_rules.xml`, plugin manifests
 
-Website pages: `L` = landing `/bahon-boi/` (+ `/bahon-boi/en/`), `guide/<slug>` = `/bahon-boi/guide/<slug>/` (+ `/en/`).
+Website pages (one URL each, both languages): `L` = landing `/bahon-boi/`, `guide/<slug>` = `/bahon-boi/guide/<slug>/`.
 
 ## Implemented features
 

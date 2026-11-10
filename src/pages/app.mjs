@@ -1,4 +1,4 @@
-// Bahon Boi landing page (Bengali default at /bahon-boi/, English at /bahon-boi/en/).
+// Bahon Boi landing page (/bahon-boi/, Bengali by default, scope bahonBoi).
 
 import { L, t, money, num, esc, SITE } from '../lib.mjs';
 import { APP, HUB, appPath, guidePath } from '../routes.mjs';
@@ -48,7 +48,7 @@ export const FAQ = [
 export function appPage(lang) {
   const T = (en, bn) => t(L(en, bn), lang);
   const m = (n) => money(n, lang);
-  const g = (slug) => guidePath(lang, slug);
+  const g = (slug) => guidePath(slug);
   const more = (slug, en = 'Read the guide', bn = 'নির্দেশিকা পড়ুন') =>
     `<a class="more-link" href="${g(slug)}">${T(en, bn)} ${icon('arrow', 'arr')}</a>`;
   const pct = (n) => ((n / MAIN.rent) * 100).toFixed(2) + '%';
@@ -387,7 +387,7 @@ export function appPage(lang) {
       <h2 id="pv-title">${T('Your accounts stay with you', 'আপনার হিসাব আপনার কাছেই')}</h2>
       <p>${T('Everything you record works without internet. There is no account, no advertising and no analytics or crash-reporting service in the current version, and your records are not sent to the developer. When the phone is online, the app only downloads a small public file to check for a newer version.', 'যা লেখেন সবই ইন্টারনেট ছাড়া চলে। বর্তমান সংস্করণে কোনো অ্যাকাউন্ট, বিজ্ঞাপন, অ্যানালিটিক্স বা ক্র্যাশ-রিপোর্টিং সেবা নেই, আর আপনার তথ্য ডেভেলপারের কাছে পাঠানো হয় না। ফোন অনলাইনে থাকলে অ্যাপ শুধু নতুন সংস্করণ আছে কি না দেখতে একটি ছোট পাবলিক ফাইল নামায়।')}</p>
       <p>${T('Being offline does not make a phone risk-free. Records — including drivers’ ID details — are only as safe as your phone and your backup files.', 'অফলাইন হলেই ফোন পুরোপুরি ঝুঁকিমুক্ত হয় না। চালকের পরিচয়ের তথ্যসহ আপনার হিসাব ততটাই নিরাপদ, যতটা নিরাপদ আপনার ফোন ও ব্যাকআপ ফাইল।')}</p>
-      <a class="more-link" href="${appPath(lang, 'privacy')}">${T('Read the Privacy Policy', 'গোপনীয়তা নীতি পড়ুন')} ${icon('arrow', 'arr')}</a>
+      <a class="more-link" href="${appPath('privacy')}">${T('Read the Privacy Policy', 'গোপনীয়তা নীতি পড়ুন')} ${icon('arrow', 'arr')}</a>
     </div>
     <ul class="pv-list">
       <li>${icon('offline')}<div><b>${T('Works offline', 'অফলাইনে চলে')}</b><span>${T('Recording, reports, documents, the guide and backups need no internet.', 'হিসাব লেখা, রিপোর্ট, কাগজপত্র, নির্দেশিকা ও ব্যাকআপে ইন্টারনেট লাগে না।')}</span></div></li>
@@ -426,10 +426,10 @@ export function appPage(lang) {
       <h2 id="cta-title">${T('Coming soon to Google Play', 'শীঘ্রই Google Play-তে')}</h2>
       <p>${T('Questions or suggestions? Email', 'প্রশ্ন বা পরামর্শ? ইমেইল করুন:')} <a href="mailto:hello@munna.dev?subject=Bahon%20Boi">hello@munna.dev</a></p>
       <ul class="pill-links">
-        <li><a href="${appPath(lang, 'contact')}">${T('Contact & support', 'যোগাযোগ ও সাহায্য')}</a></li>
-        <li><a href="${appPath(lang, 'terms')}">${T('Terms', 'শর্তাবলি')}</a></li>
-        <li><a href="${appPath(lang, 'privacy')}">${T('Privacy Policy', 'গোপনীয়তা নীতি')}</a></li>
-        <li><a href="${HUB[lang]}">${T('All apps', 'সব অ্যাপ')}</a></li>
+        <li><a href="${appPath('contact')}">${T('Contact & support', 'যোগাযোগ ও সাহায্য')}</a></li>
+        <li><a href="${appPath('terms')}">${T('Terms', 'শর্তাবলি')}</a></li>
+        <li><a href="${appPath('privacy')}">${T('Privacy Policy', 'গোপনীয়তা নীতি')}</a></li>
+        <li><a href="${HUB}">${T('All apps', 'সব অ্যাপ')}</a></li>
       </ul>
     </div>
   </div>
@@ -445,7 +445,7 @@ export function appPage(lang) {
         '@id': SITE + '/bahon-boi/#app',
         name: 'Bahon Boi',
         alternateName: 'বাহন বই',
-        url: SITE + APP[lang],
+        url: SITE + APP,
         description: T('Vehicle income, expense, driver and document accounts for vehicle owners in Bangladesh.', 'বাংলাদেশের বাহন মালিকদের জন্য আয়, খরচ, চালক ও কাগজপত্রের হিসাবের অ্যাপ।'),
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Android',
@@ -461,8 +461,8 @@ export function appPage(lang) {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: T('Apps', 'অ্যাপস'), item: SITE + HUB[lang] },
-          { '@type': 'ListItem', position: 2, name: T('Bahon Boi', 'বাহন বই'), item: SITE + APP[lang] },
+          { '@type': 'ListItem', position: 1, name: T('Apps', 'অ্যাপস'), item: SITE + HUB },
+          { '@type': 'ListItem', position: 2, name: T('Bahon Boi', 'বাহন বই'), item: SITE + APP },
         ],
       },
     ],

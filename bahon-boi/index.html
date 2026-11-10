@@ -6,9 +6,6 @@
 <title>বাহন বই — গাড়ির আয়-খরচ, চালক ও কাগজপত্রের হিসাব</title>
 <meta name="description" content="বাহন বই: বাস, প্রাইভেট কার, সিএনজি, অটোরিকশা, ট্রাক ও পিকআপ মালিকদের জন্য আয়, আদায়, বাকি, খরচ, লাভ, চালক ও কাগজের মেয়াদের হিসাব — অফলাইনে, বাংলায় বা ইংরেজিতে।">
 <link rel="canonical" href="https://apps.munna.dev/bahon-boi/">
-<link rel="alternate" hreflang="en" href="https://apps.munna.dev/bahon-boi/en/">
-<link rel="alternate" hreflang="bn" href="https://apps.munna.dev/bahon-boi/">
-<link rel="alternate" hreflang="x-default" href="https://apps.munna.dev/bahon-boi/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#2f6f6b">
 <meta name="author" content="Md. Risul Islam Munna">
@@ -33,11 +30,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
-<script>document.documentElement.classList.add('js')</script>
+<style>.lang-pending #lang-root{visibility:hidden;animation:lang-reveal 0s 1.5s forwards}@keyframes lang-reveal{to{visibility:visible}}</style>
+<script>(function(h){h.classList.add('js');try{var v=localStorage.getItem('bahonBoi.language');if((v==='en'||v==='bn')&&v!=='bn'){h.lang=v;h.classList.add('lang-pending')}}catch(e){}})(document.documentElement)</script>
 <script defer src="/assets/site.js"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MobileApplication","@id":"https://apps.munna.dev/bahon-boi/#app","name":"Bahon Boi","alternateName":"বাহন বই","url":"https://apps.munna.dev/bahon-boi/","description":"বাংলাদেশের বাহন মালিকদের জন্য আয়, খরচ, চালক ও কাগজপত্রের হিসাবের অ্যাপ।","applicationCategory":"FinanceApplication","operatingSystem":"Android","inLanguage":["bn","en"],"image":"https://apps.munna.dev/bahon-boi/assets/icon-512.png","author":{"@type":"Person","name":"Md. Risul Islam Munna","url":"https://munna.dev"}},{"@type":"FAQPage","inLanguage":"bn","mainEntity":[{"@type":"Question","name":"অ্যাপটি কোথায় পাওয়া যাবে?","acceptedAnswer":{"@type":"Answer","text":"বাহন বই এখনো কোনো অ্যাপ স্টোরে প্রকাশিত হয়নি। প্রকাশ হলে এই পেজে ডাউনলোড লিংক দেওয়া হবে।"}},{"@type":"Question","name":"চালকের দেওয়া টাকা কি নতুন আয় হিসেবে যোগ হয়?","acceptedAnswer":{"@type":"Answer","text":"না। আয় একবারই, আলাদা এন্ট্রি হিসেবে লেখা হয়। চালক টাকা দিলে টাকা পাওয়া লিখে ওই আয়ের সাথে মেলান, তাতে বাকি কমে। পাওয়া টাকা কখনো আয় বাড়ায় না, আর কোনো এন্ট্রির বাকির চেয়ে বেশি মেলানো যায় না — বাড়তি টাকা অগ্রিম হিসেবে রাখতে হয়।"}},{"@type":"Question","name":"দৈনিক ভাড়া আর ট্রিপের আয় কি একইভাবে লেখা হয়?","acceptedAnswer":{"@type":"Answer","text":"না। দৈনিক ভাড়ায় দৈনিক হার দিলে অঙ্ক নিজে থেকে হার × দিন হয়। ট্রিপভিত্তিক আয়ে আসল আয়ের অঙ্ক লেখেন, চাইলে ট্রিপের সংখ্যাও। নির্দিষ্ট চুক্তি ও অন্যান্য আয়ও আলাদা ধরন।"}},{"@type":"Question","name":"দেরিতে আসা বিল কোন মাসে ধরা হয়?","acceptedAnswer":{"@type":"Answer","text":"খরচ যেদিন কাজ হয়েছে সেই দিনের লাভে ধরা হয়; পরিশোধ যেদিন টাকা দিয়েছেন সেই দিনের নগদে। পুরনো তারিখে কিছু লিখলে রিপোর্ট নতুন করে হিসাব হয়।"}},{"@type":"Question","name":"আমার হিসাব কোথায় থাকে? অ্যাকাউন্ট লাগে?","acceptedAnswer":{"@type":"Answer","text":"অ্যাকাউন্ট লাগে না। তথ্য থাকে আপনার ফোনে, অ্যাপের নিজস্ব স্টোরেজে, আর অ্যাপ ইন্টারনেট ছাড়াই চলে। তথ্য ডেভেলপারের কাছে পাঠানো হয় না।"}},{"@type":"Question","name":"ফোন হারালে কী হবে?","acceptedAnswer":{"@type":"Answer","text":"শুধু যা ব্যাকআপ করে ফোনের বাইরে কপি করেছেন, সেটিই ফেরত আনা যাবে। প্রথম দিনেই ব্যাকআপ ও রিস্টোর সেটআপ করুন, “BahonBoi Backups” ফোল্ডার নিয়মিত কম্পিউটার বা পেনড্রাইভে কপি করুন, আর রিকভারি কী অন্য জায়গায় রাখুন। ব্যাকআপ কপি না থাকলে হারানো ফোনের তথ্য উদ্ধার করা যায় না।"}},{"@type":"Question","name":"কাগজের মেয়াদ শেষের আগে কি ফোনে নোটিফিকেশন আসে?","acceptedAnswer":{"@type":"Answer","text":"এখনো না। মেয়াদ শেষ বা শিগগির শেষ হওয়া কাগজ অ্যাপের ভেতরে দেখায় — ড্যাশবোর্ডের ঘণ্টা ও সতর্কতা অংশে এবং বাহনের পর্দায়।"}},{"@type":"Question","name":"একটি বাহনের কি একাধিক মালিক থাকতে পারেন?","acceptedAnswer":{"@type":"Answer","text":"হ্যাঁ, তথ্য হিসেবে: প্রতিটি মালিকের অবদান ও ভাগ রাখা হয়। মালিকদের আলাদা লগইন নেই, আর অ্যাপ তাঁদের মধ্যে লাভ ভাগ করে না।"}},{"@type":"Question","name":"কম্পিউটারে বা অনলাইনে কি বাহন বই ব্যবহার করা যায়?","acceptedAnswer":{"@type":"Answer","text":"না। বাহন বই একটি মোবাইল অ্যাপ। এই ওয়েবসাইট শুধু অ্যাপটি বোঝায়; এখানে হিসাব রাখা যায় না।"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"অ্যাপস","item":"https://apps.munna.dev/bn/"},{"@type":"ListItem","position":2,"name":"বাহন বই","item":"https://apps.munna.dev/bahon-boi/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"MobileApplication","@id":"https://apps.munna.dev/bahon-boi/#app","name":"Bahon Boi","alternateName":"বাহন বই","url":"https://apps.munna.dev/bahon-boi/","description":"বাংলাদেশের বাহন মালিকদের জন্য আয়, খরচ, চালক ও কাগজপত্রের হিসাবের অ্যাপ।","applicationCategory":"FinanceApplication","operatingSystem":"Android","inLanguage":["bn","en"],"image":"https://apps.munna.dev/bahon-boi/assets/icon-512.png","author":{"@type":"Person","name":"Md. Risul Islam Munna","url":"https://munna.dev"}},{"@type":"FAQPage","inLanguage":"bn","mainEntity":[{"@type":"Question","name":"অ্যাপটি কোথায় পাওয়া যাবে?","acceptedAnswer":{"@type":"Answer","text":"বাহন বই এখনো কোনো অ্যাপ স্টোরে প্রকাশিত হয়নি। প্রকাশ হলে এই পেজে ডাউনলোড লিংক দেওয়া হবে।"}},{"@type":"Question","name":"চালকের দেওয়া টাকা কি নতুন আয় হিসেবে যোগ হয়?","acceptedAnswer":{"@type":"Answer","text":"না। আয় একবারই, আলাদা এন্ট্রি হিসেবে লেখা হয়। চালক টাকা দিলে টাকা পাওয়া লিখে ওই আয়ের সাথে মেলান, তাতে বাকি কমে। পাওয়া টাকা কখনো আয় বাড়ায় না, আর কোনো এন্ট্রির বাকির চেয়ে বেশি মেলানো যায় না — বাড়তি টাকা অগ্রিম হিসেবে রাখতে হয়।"}},{"@type":"Question","name":"দৈনিক ভাড়া আর ট্রিপের আয় কি একইভাবে লেখা হয়?","acceptedAnswer":{"@type":"Answer","text":"না। দৈনিক ভাড়ায় দৈনিক হার দিলে অঙ্ক নিজে থেকে হার × দিন হয়। ট্রিপভিত্তিক আয়ে আসল আয়ের অঙ্ক লেখেন, চাইলে ট্রিপের সংখ্যাও। নির্দিষ্ট চুক্তি ও অন্যান্য আয়ও আলাদা ধরন।"}},{"@type":"Question","name":"দেরিতে আসা বিল কোন মাসে ধরা হয়?","acceptedAnswer":{"@type":"Answer","text":"খরচ যেদিন কাজ হয়েছে সেই দিনের লাভে ধরা হয়; পরিশোধ যেদিন টাকা দিয়েছেন সেই দিনের নগদে। পুরনো তারিখে কিছু লিখলে রিপোর্ট নতুন করে হিসাব হয়।"}},{"@type":"Question","name":"আমার হিসাব কোথায় থাকে? অ্যাকাউন্ট লাগে?","acceptedAnswer":{"@type":"Answer","text":"অ্যাকাউন্ট লাগে না। তথ্য থাকে আপনার ফোনে, অ্যাপের নিজস্ব স্টোরেজে, আর অ্যাপ ইন্টারনেট ছাড়াই চলে। তথ্য ডেভেলপারের কাছে পাঠানো হয় না।"}},{"@type":"Question","name":"ফোন হারালে কী হবে?","acceptedAnswer":{"@type":"Answer","text":"শুধু যা ব্যাকআপ করে ফোনের বাইরে কপি করেছেন, সেটিই ফেরত আনা যাবে। প্রথম দিনেই ব্যাকআপ ও রিস্টোর সেটআপ করুন, “BahonBoi Backups” ফোল্ডার নিয়মিত কম্পিউটার বা পেনড্রাইভে কপি করুন, আর রিকভারি কী অন্য জায়গায় রাখুন। ব্যাকআপ কপি না থাকলে হারানো ফোনের তথ্য উদ্ধার করা যায় না।"}},{"@type":"Question","name":"কাগজের মেয়াদ শেষের আগে কি ফোনে নোটিফিকেশন আসে?","acceptedAnswer":{"@type":"Answer","text":"এখনো না। মেয়াদ শেষ বা শিগগির শেষ হওয়া কাগজ অ্যাপের ভেতরে দেখায় — ড্যাশবোর্ডের ঘণ্টা ও সতর্কতা অংশে এবং বাহনের পর্দায়।"}},{"@type":"Question","name":"একটি বাহনের কি একাধিক মালিক থাকতে পারেন?","acceptedAnswer":{"@type":"Answer","text":"হ্যাঁ, তথ্য হিসেবে: প্রতিটি মালিকের অবদান ও ভাগ রাখা হয়। মালিকদের আলাদা লগইন নেই, আর অ্যাপ তাঁদের মধ্যে লাভ ভাগ করে না।"}},{"@type":"Question","name":"কম্পিউটারে বা অনলাইনে কি বাহন বই ব্যবহার করা যায়?","acceptedAnswer":{"@type":"Answer","text":"না। বাহন বই একটি মোবাইল অ্যাপ। এই ওয়েবসাইট শুধু অ্যাপটি বোঝায়; এখানে হিসাব রাখা যায় না।"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"অ্যাপস","item":"https://apps.munna.dev/"},{"@type":"ListItem","position":2,"name":"বাহন বই","item":"https://apps.munna.dev/bahon-boi/"}]}]}</script>
 </head>
 <body class="app-bahon-boi">
+<div id="lang-root" data-lang="bn">
 <a class="skip-link" href="#main">মূল অংশে যান</a>
 <header class="site-header" data-header>
   <div class="wrap header-row">
@@ -50,10 +49,10 @@
       <a href="/bahon-boi/guide/">ব্যবহার নির্দেশিকা</a>
       <a href="/bahon-boi/#faq">প্রশ্নোত্তর</a>
       <a href="/bahon-boi/contact/">যোগাযোগ</a>
-      <a href="/bn/">সব অ্যাপ</a>
+      <a href="/">সব অ্যাপ</a>
     </nav>
     <div class="header-tools">
-      <nav class="lang-switch" aria-label="ভাষা"><a lang="bn" hreflang="bn" href="/bahon-boi/" aria-label="বাংলা" aria-current="true">বাং</a><span aria-hidden="true">|</span><a lang="en" hreflang="en" href="/bahon-boi/en/" aria-label="English" data-keep-hash>EN</a></nav>
+      <div class="lang-switch" role="group" aria-label="ভাষা"><button type="button" lang="bn" data-set-lang="bn" aria-label="বাংলা" aria-pressed="true">বাং</button><span aria-hidden="true">|</span><button type="button" lang="en" data-set-lang="en" aria-label="English" aria-pressed="false">EN</button></div>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="m-open" d="M4 7h16M4 12h16M4 17h16"/><path class="m-close" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">মেনু</span></button>
     </div>
   </div>
@@ -330,7 +329,7 @@
         <li><a href="/bahon-boi/contact/">যোগাযোগ ও সাহায্য</a></li>
         <li><a href="/bahon-boi/terms/">শর্তাবলি</a></li>
         <li><a href="/bahon-boi/privacy/">গোপনীয়তা নীতি</a></li>
-        <li><a href="/bn/">সব অ্যাপ</a></li>
+        <li><a href="/">সব অ্যাপ</a></li>
       </ul>
     </div>
   </div>
@@ -351,12 +350,337 @@
       <li><a href="/bahon-boi/contact/">যোগাযোগ</a></li>
       <li><a href="/bahon-boi/terms/">শর্তাবলি</a></li>
       <li><a href="/bahon-boi/privacy/">গোপনীয়তা নীতি</a></li></ul></div><div><h2>আরও</h2><ul>
-      <li><a href="/bn/">সব অ্যাপ</a></li>
+      <li><a href="/">সব অ্যাপ</a></li>
       <li><a href="mailto:hello@munna.dev">ইমেইল: hello@munna.dev</a></li>
       <li><a href="https://munna.dev" rel="noopener">ডেভেলপারের ওয়েবসাইট</a></li></ul></div>
     </div>
     <p class="copy">&copy; ২০২৬ <span lang="en">Md. Risul Islam Munna</span> · ঢাকা, বাংলাদেশে তৈরি স্বাধীন অ্যাপ।</p>
   </div>
 </footer>
+</div>
+<template id="lang-alt" data-lang="en">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" data-header>
+  <div class="wrap header-row">
+    <a class="brand" href="/bahon-boi/" aria-label="Bahon Boi — app page">
+      <img src="/bahon-boi/assets/favicon-48.png" width="34" height="34" alt="">
+      <b>Bahon Boi</b>
+    </a>
+    <nav class="main-nav" id="site-nav" aria-label="Main">
+      <a href="/bahon-boi/#features">Features</a>
+      <a href="/bahon-boi/guide/">User guide</a>
+      <a href="/bahon-boi/#faq">FAQ</a>
+      <a href="/bahon-boi/contact/">Contact</a>
+      <a href="/">All apps</a>
+    </nav>
+    <div class="header-tools">
+      <div class="lang-switch" role="group" aria-label="Language"><button type="button" lang="bn" data-set-lang="bn" aria-label="বাংলা" aria-pressed="false">বাং</button><span aria-hidden="true">|</span><button type="button" lang="en" data-set-lang="en" aria-label="English" aria-pressed="true">EN</button></div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path class="m-open" d="M4 7h16M4 12h16M4 17h16"/><path class="m-close" d="M6 6l12 12M18 6L6 18"/></svg><span class="sr-only">Menu</span></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="app-hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="app-id">
+        <img src="/bahon-boi/assets/logo-320.webp" width="72" height="72" alt="Bahon Boi app icon: a car above an open book">
+        <div><b>Bahon Boi</b><small>Vehicle accounts app · Android</small></div>
+      </div>
+      <h1 id="hero-title">Every vehicle’s accounts, <em>in one book.</em></h1>
+      <p class="lede">See what each vehicle really earned, what drivers still owe, what you spent and what profit is left — on your phone, in Bengali or English, without internet.</p>
+      <p class="hero-aud">For owners of buses, private cars, CNGs, auto-rickshaws, trucks, pickups and other vehicles, and for small transport businesses in Bangladesh.</p>
+      <div class="btn-row">
+        <span class="btn btn-store" aria-disabled="true"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg> Google Play — coming soon</span>
+        <a class="btn btn-ghost" href="/bahon-boi/guide/"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg> How to use it</a>
+      </div>
+      <p class="status"><span class="badge">Coming soon</span> Not yet published in any store. The download link will be added here.</p>
+    </div>
+    <figure class="hero-shots">
+      <div class="shots-fan"><img class="shot s-left" src="/bahon-boi/assets/screens/en-report.webp" width="640" height="1314" alt="Reports screen with a monthly income and expense chart and a profit and loss summary for the year." loading="lazy" decoding="async"><img class="shot s-center" src="/bahon-boi/assets/screens/en-dashboard.webp" width="640" height="1314" alt="Bahon Boi dashboard showing earned income, expenses, profit, money to collect and a document alert for November." fetchpriority="high" decoding="async"><img class="shot s-right" src="/bahon-boi/assets/screens/en-vehicle.webp" width="640" height="1314" alt="Vehicle screen for a CNG with an all-time summary, amounts still due today and the assigned night-shift driver." loading="lazy" decoding="async"></div>
+      <figcaption>Real screenshots from the current app in normal use, filled with fictional example records.</figcaption>
+    </figure>
+  </div>
+</section>
+<section class="section-tight benefits" aria-labelledby="ben-title">
+  <div class="wrap">
+    <h2 id="ben-title" class="sr-only">Main benefits</h2>
+    <ul class="benefit-list"><li><span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/><path d="M3 3l18 18"/></svg></span><div><h3>Works offline</h3><p>Record and check accounts anywhere. No internet is needed for daily use.</p></div></li><li><span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M3 3l18 18"/></svg></span><div><h3>No account needed</h3><p>No sign-up or login. Records stay in the app’s storage on your phone.</p></div></li><li><span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M12 12h2M16 12h0M8 16h2M12 16h2"/></svg></span><div><h3>Earned vs collected, kept apart</h3><p>Rent you earned and money you actually received are never mixed up.</p></div></li><li><span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 4-3 7-7 9"/><path d="M13 21l4-9 4 9M14.5 18h5"/></svg></span><div><h3>Bengali and English</h3><p>Bengali by default, with Bengali digits. Switch to English any time.</p></div></li></ul>
+  </div>
+</section>
+<section class="section-tight showcase" id="screens" aria-labelledby="screens-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Inside the app</p>
+      <h2 id="screens-title">What you see on your phone</h2>
+    </div>
+    <ul class="showcase-grid"><li><figure><img class="shot" src="/bahon-boi/assets/screens/en-dashboard.webp" width="640" height="1314" alt="Bahon Boi dashboard showing earned income, expenses, profit, money to collect and a document alert for November." loading="lazy" decoding="async"><figcaption><b>Dashboard</b>The month at a glance: earned income, expenses, profit and what is still to collect.</figcaption></figure></li><li><figure><img class="shot" src="/bahon-boi/assets/screens/en-report.webp" width="640" height="1314" alt="Reports screen with a monthly income and expense chart and a profit and loss summary for the year." loading="lazy" decoding="async"><figcaption><b>Monthly report</b>Income and expenses by month, with profit and loss for any period.</figcaption></figure></li><li><figure><img class="shot" src="/bahon-boi/assets/screens/en-vehicle.webp" width="640" height="1314" alt="Vehicle screen for a CNG with an all-time summary, amounts still due today and the assigned night-shift driver." loading="lazy" decoding="async"><figcaption><b>Vehicle details</b>Each vehicle’s own book: earned, received, settled against rent and still due.</figcaption></figure></li><li><figure><img class="shot" src="/bahon-boi/assets/screens/en-drivers.webp" width="640" height="1314" alt="Driver list with five drivers, the vehicle each one drives and masked NID and licence numbers." loading="lazy" decoding="async"><figcaption><b>Drivers</b>Every driver with phone, vehicle and masked ID numbers.</figcaption></figure></li></ul>
+    <p class="showcase-note muted small">Real screenshots from the current app in normal use, filled with fictional example records.</p>
+  </div>
+</section>
+<section class="section-tight vehicles" aria-labelledby="veh-title">
+  <div class="wrap">
+    <div class="split-head">
+      <h2 id="veh-title">For every kind of vehicle</h2>
+      <p class="muted">One owner with one CNG or a small fleet — each vehicle keeps its own book, and you can see them all together.</p>
+    </div>
+    <ul class="vehicle-grid"><li><svg class="vicon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="34" height="25" rx="4"/><path d="M7 21h34M13 13h8v6h-8zM27 13h8v6h-8z"/><circle cx="15" cy="37" r="3"/><circle cx="33" cy="37" r="3"/></svg><span>Bus</span></li><li><svg class="vicon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30v-5l4-8c1-2 2-3 5-3h18c3 0 4 1 5 3l4 8v5z"/><path d="M11 23h26"/><circle cx="14" cy="32" r="3.5"/><circle cx="34" cy="32" r="3.5"/></svg><span>Private car</span></li><li><svg class="vicon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 33V18c0-5 4-9 9-9h6c6 0 11 5 11 11v13z"/><path d="M10 20h26M22 9v24"/><circle cx="14" cy="36" r="3.5"/><circle cx="34" cy="36" r="3.5"/></svg><span>CNG</span></li><li><svg class="vicon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13h28M10 13v16M34 13v16"/><path d="M8 29h32l2-6h-8"/><path d="M14 22h12"/><circle cx="13" cy="34" r="3.5"/><circle cx="35" cy="34" r="3.5"/></svg><span>Auto-rickshaw</span></li><li><svg class="vicon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="24" height="20" rx="2"/><path d="M29 17h7l6 7v7H29z"/><circle cx="12" cy="34" r="3.5"/><circle cx="36" cy="34" r="3.5"/></svg><span>Truck</span></li><li><svg class="vicon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 30v-7h18V14h10l6 9h4v7z"/><path d="M27 17v6"/><circle cx="12" cy="32" r="3.5"/><circle cx="35" cy="32" r="3.5"/></svg><span>Pickup</span></li><li><svg class="vicon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="31" r="6"/><circle cx="37" cy="31" r="6"/><path d="M11 31l8-12h9l9 12M24 19l-3-6h-5M28 19h6"/></svg><span>Motorcycle</span></li><li><svg class="vicon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="13" height="13" rx="3"/><rect x="27" y="8" width="13" height="13" rx="3"/><rect x="8" y="27" width="13" height="13" rx="3"/><path d="M33.5 28v11M28 33.5h11"/></svg><span>Other (your own type)</span></li></ul>
+  </div>
+</section>
+<section class="section workflow" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2 id="how-title">A simple daily routine</h2>
+      <p class="lede">Six steps cover most days. Each step links to a detailed guide.</p>
+    </div>
+    <ol class="flow"><li><a href="/bahon-boi/guide/vehicles-owners/"><span class="flow-ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M6 17l1.5-6h9L18 17M8 11l1-3h6l1 3"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg></span><b>Add a vehicle</b><span>Nickname, type, plate and owners.</span></a></li><li><a href="/bahon-boi/guide/drivers/"><span class="flow-ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M17 11l2 2 3-3"/></svg></span><b>Assign a driver</b><span>Shift and start date.</span></a></li><li><a href="/bahon-boi/guide/income/"><span class="flow-ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></span><b>Record income</b><span>Daily rent, contract or trips.</span></a></li><li><a href="/bahon-boi/guide/money-received/"><span class="flow-ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9v.01M18 15v.01"/></svg></span><b>Record money received</b><span>Link it to the income it pays.</span></a></li><li><a href="/bahon-boi/guide/expenses/"><span class="flow-ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l6 6 4-4 8 8M15 17h6v-6"/></svg></span><b>Add expenses</b><span>Who bears it, who paid.</span></a></li><li><a href="/bahon-boi/guide/reports/"><span class="flow-ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><b>Check reports</b><span>Profit, cash and dues.</span></a></li></ol>
+  </div>
+</section>
+<section class="section features" id="features" aria-labelledby="feat-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Features</p>
+      <h2 id="feat-title">Everything here works in the current version</h2>
+      <p class="lede">Planned features are listed separately in the guide, under “Not available in this version”.</p>
+    </div>
+    <div class="feature-row" id="f-people">
+    <div class="feature-copy">
+      <p class="eyebrow">Vehicles, owners and drivers</p>
+      <h3>Know who owns and who drives each vehicle</h3>
+      <p>Keep each vehicle’s details and photos, its owners and their shares, and a full history of which driver drove it on which shift.</p>
+      <ul class="checks"><li>Vehicles without a plate yet can be saved by nickname</li><li>Driver profile, NID and licence numbers, emergency contact and ID photos</li><li>Several drivers per vehicle: day, night or custom shifts</li><li>Ending an assignment keeps it in the history</li></ul>
+      <a class="more-link" href="/bahon-boi/guide/drivers/">Read the guide <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="feature-art"><div class="mini-cards">
+    <div class="mini"><span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M6 17l1.5-6h9L18 17M8 11l1-3h6l1 3"/><circle cx="8" cy="18" r="1.5"/><circle cx="16" cy="18" r="1.5"/></svg></span><b>Vehicle</b><span>Plate, type, photos, documents</span></div>
+    <div class="mini"><span class="ico"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M3 3l18 18"/></svg></span><b>Owners</b><span>Contribution → share (record only)</span></div>
+  </div><svg class="ill " viewBox="0 0 560 250" role="img" aria-labelledby="as-t-en as-d-en" xmlns="http://www.w3.org/2000/svg"><title id="as-t-en">Two drivers on one vehicle</title><desc id="as-d-en">Example: Driver A works the day shift from 6:00 to 18:00 and Driver B the night shift from 18:00 to 6:00 the next morning. An earlier driver whose assignment ended stays in the history.</desc><text class="s-muted" x="150" y="30" font-size="12" text-anchor="middle">6:00</text><path class="s-grid-line" d="M150 40v170"/><text class="s-muted" x="245" y="30" font-size="12" text-anchor="middle">12:00</text><path class="s-grid-line" d="M245 40v170"/><text class="s-muted" x="340" y="30" font-size="12" text-anchor="middle">18:00</text><path class="s-grid-line" d="M340 40v170"/><text class="s-muted" x="435" y="30" font-size="12" text-anchor="middle">24:00</text><path class="s-grid-line" d="M435 40v170"/><text class="s-muted" x="530" y="30" font-size="12" text-anchor="middle">6:00</text><path class="s-grid-line" d="M530 40v170"/><text class="s-ink" x="16" y="78" font-size="14" font-weight="600">Driver A</text><text class="s-muted" x="16" y="96" font-size="12">Day shift</text><rect class="s-accent-f" x="150" y="64" width="190" height="34" rx="10"/><text class="s-ink" x="16" y="138" font-size="14" font-weight="600">Driver B</text><text class="s-muted" x="16" y="156" font-size="12">Night shift</text><rect class="s-ink-f" x="340" y="124" width="190" height="34" rx="10"/><text class="s-on-ink" x="435" y="146" font-size="12" text-anchor="middle">crosses midnight</text><text class="s-muted" x="16" y="196" font-size="13">Earlier driver</text><rect class="s-ended" x="150" y="182" width="380" height="24" rx="8"/><text class="s-muted" x="340" y="199" font-size="12" text-anchor="middle">Assignment ended — kept in history</text></svg></div>
+  </div>
+    <div class="feature-row flip" id="f-income">
+    <div class="feature-copy">
+      <p class="eyebrow">Income, money received and dues</p>
+      <h3>Rent earned and money received, kept separate</h3>
+      <p>Record income for a day, week, month or any dates. Record money when it actually reaches you and link it to the income it pays — partial payments and advances included.</p>
+      <ul class="checks"><li>Daily rent, fixed contract, trip-based and other income</li><li>Warns before two income entries cover the same day</li><li>“Fill oldest first” applies money to the oldest dues</li><li>Extra money waits as an advance, never as income</li></ul>
+      <a class="more-link" href="/bahon-boi/guide/money-received/">Read the guide <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="feature-art"><div class="mini-ledger" role="img" aria-label="Example: income ৳ 7,000, received ৳ 5,000, due ৳ 2,000.">
+    <div class="ml-entry"><span>Income · weekly rent</span><b>৳ 7,000</b></div>
+    <div class="ml-bar" aria-hidden="true"><i class="ml-got" style="width:71.43%"></i><i class="ml-due" style="width:28.57%"></i></div>
+    <div class="ml-legend"><span class="k-got">Received ৳ 5,000</span><span class="k-due">Due ৳ 2,000</span></div>
+    <div class="ml-methods" aria-hidden="true"><span>Cash</span><span>bKash</span><span>Nagad</span><span>Rocket</span><span>Bank</span></div>
+  </div></div>
+  </div>
+    <div class="feature-row" id="f-expense">
+    <div class="feature-copy">
+      <p class="eyebrow">Expenses and payments</p>
+      <h3>Every cost on the right date, paid or not</h3>
+      <p>Fuel, repairs, servicing, driver salary, documents and other costs. The expense date decides the month’s profit; the payment date decides cash.</p>
+      <ul class="checks"><li>Paid in full, partly paid or not paid yet — add payments later</li><li>Invoice photo and shop / vendor</li><li>Bills entered more than 7 days late are marked “Recorded later”</li></ul>
+      <a class="more-link" href="/bahon-boi/guide/expenses/">Read the guide <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="feature-art"><div class="who-pays">
+    <div class="wp-col"><h4>Who bears this cost?</h4>
+      <p><b>Owner</b> — counts in your expenses and profit.</p>
+      <p><b>Driver</b> — kept for reference only; never lowers rent.</p></div>
+    <div class="wp-col"><h4>Who paid the shop?</h4>
+      <p><b>Owner</b> — paid in full, partly, or not yet.</p>
+      <p><b>Driver, from own money</b> — pay the driver back, or adjust against rent.</p></div>
+  </div></div>
+  </div>
+    <div class="feature-row flip" id="f-reports">
+    <div class="feature-copy">
+      <p class="eyebrow">Dashboard and reports</p>
+      <h3>Profit and cash, side by side — never mixed</h3>
+      <p>The Home screen shows a month at a glance. Reports cover any day, month or date range, for one vehicle or all, with an income & expense chart.</p>
+      <ul class="checks"><li>Earned income, expenses, profit or loss, and money still to collect</li><li>Balances “as of” any day: dues, unpaid bills, advances, owed to drivers</li><li>Tap any number to see the entries behind it</li></ul>
+      <a class="more-link" href="/bahon-boi/guide/reports/">Read the guide <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="feature-art"><figure class="art-fig"><svg class="ill " viewBox="0 0 540 270" role="img" aria-labelledby="rc-t-en rc-d-en" xmlns="http://www.w3.org/2000/svg"><title id="rc-t-en">Income and expense chart (example)</title><desc id="rc-d-en">Example bar chart for four months. Earned income: ৳ 28,000, ৳ 30,000, ৳ 26,000, ৳ 31,000; expenses: ৳ 9,000, ৳ 12,500, ৳ 7,000, ৳ 15,000.</desc><path class="s-grid-line" d="M60 210h460M60 125h460M60 40h460"/><rect class="s-pos-f" x="80" y="61.25" width="34" height="148.75" rx="5"/><rect class="s-neg-f" x="120" y="162.1875" width="34" height="47.8125" rx="5"/><text class="s-muted" x="117" y="232" font-size="13" text-anchor="middle">Jan</text><rect class="s-pos-f" x="192" y="50.625" width="34" height="159.375" rx="5"/><rect class="s-neg-f" x="232" y="143.59375" width="34" height="66.40625" rx="5"/><text class="s-muted" x="229" y="232" font-size="13" text-anchor="middle">Feb</text><rect class="s-pos-f" x="304" y="71.875" width="34" height="138.125" rx="5"/><rect class="s-neg-f" x="344" y="172.8125" width="34" height="37.1875" rx="5"/><text class="s-muted" x="341" y="232" font-size="13" text-anchor="middle">Mar</text><rect class="s-pos-f" x="416" y="45.3125" width="34" height="164.6875" rx="5"/><rect class="s-neg-f" x="456" y="130.3125" width="34" height="79.6875" rx="5"/><text class="s-muted" x="453" y="232" font-size="13" text-anchor="middle">Apr</text><g transform="translate(70 20)"><rect class="s-pos-f" width="14" height="14" rx="3"/><text class="s-ink" x="22" y="12" font-size="13">Earned income</text><rect class="s-neg-f" x="170" width="14" height="14" rx="3"/><text class="s-ink" x="192" y="12" font-size="13">Expenses</text><text class="s-muted" x="440" y="12" font-size="12" text-anchor="end">Example</text></g></svg><figcaption>Example chart drawn for this website.</figcaption></figure></div>
+  </div>
+    <div class="feature-row" id="f-docs">
+    <div class="feature-copy">
+      <p class="eyebrow">Documents and reminders</p>
+      <h3>Know which papers are about to expire</h3>
+      <p>Registration, fitness, tax token, route permit, insurance, driving licence and other papers — with dates and photos of each page.</p>
+      <ul class="checks"><li>Valid, Expiring soon, Expired or No expiry</li><li>Choose how many days before expiry to be warned</li><li>Alerts appear inside the app (bell on the Home screen) — no phone notifications</li></ul>
+      <a class="more-link" href="/bahon-boi/guide/documents/">Read the guide <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="feature-art"><svg class="ill " viewBox="0 0 560 200" role="img" aria-labelledby="dt-t-en dt-d-en" xmlns="http://www.w3.org/2000/svg"><title id="dt-t-en">Document expiry states</title><desc id="dt-d-en">Timeline: a document is Valid until its warning period starts, Expiring soon during the warning days (30 days if none chosen), and Expired after the expiry date. Alerts appear inside the app only.</desc><rect class="s-pos-f" x="30" y="80" width="280" height="22" rx="11"/><rect class="s-warn-f" x="300" y="80" width="140" height="22"/><rect class="s-neg-f" x="440" y="80" width="90" height="22" rx="11"/><rect class="s-neg-f" x="440" y="80" width="20" height="22"/><text class="s-ink" x="170" y="64" font-size="14" font-weight="600" text-anchor="middle">Valid</text><text class="s-ink" x="370" y="64" font-size="14" font-weight="600" text-anchor="middle">Expiring soon</text><text class="s-ink" x="485" y="64" font-size="14" font-weight="600" text-anchor="middle">Expired</text><path class="s-ink-stroke" d="M300 112v26M440 112v26" stroke-width="2"/><text class="s-muted" x="300" y="158" font-size="12" text-anchor="middle">Warning starts</text><text class="s-muted" x="300" y="176" font-size="12" text-anchor="middle">(your days, or 30)</text><text class="s-muted" x="440" y="158" font-size="12" text-anchor="middle">Expiry date</text></svg></div>
+  </div>
+  </div>
+</section>
+<section class="section section-alt money" id="money" aria-labelledby="money-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Accounting, explained</p>
+      <h2 id="money-title">Earned, received, due, profit and cash are different numbers</h2>
+      <p class="lede">Bahon Boi never adds a driver’s payment as new income, and never works out cash from profit. Here is one week of one vehicle, with example figures.</p>
+    </div>
+
+    <figure class="story" data-animate>
+      <figcaption class="story-tag">Example · one week, one CNG</figcaption>
+      <ol class="story-steps">
+        <li><span class="st-n">1</span><div class="st-body"><b>Rent earned for the week</b>
+          <div class="bar"><i class="b-earn" style="--w:100%"></i></div><span class="st-v">৳ 7,000</span></div></li>
+        <li><span class="st-n">2</span><div class="st-body"><b>Driver pays part of it</b>
+          <div class="bar"><i class="b-got" style="--w:71.43%"></i><i class="b-due" style="--w:28.57%"></i></div>
+          <span class="st-v">Received ৳ 5,000 · due ৳ 2,000</span>
+          <p class="st-note">Income is still ৳ 7,000 — the payment only lowers the due.</p></div></li>
+        <li><span class="st-n">3</span><div class="st-body"><b>Owner’s repair bill</b>
+          <div class="bar"><i class="b-exp" style="--w:21.43%"></i></div><span class="st-v">৳ 1,500</span></div></li>
+        <li class="st-result"><span class="st-n">=</span><div class="st-body"><b>Profit = ৳ 7,000 − ৳ 1,500</b>
+          <div class="bar"><i class="b-profit" style="--w:78.57%"></i></div><span class="st-v">৳ 5,500</span></div></li>
+      </ol>
+      <div class="cash-box">
+        <h3>Cash, shown separately</h3>
+        <table>
+          <caption class="sr-only">Cash movement in two cases</caption>
+          <thead><tr><th scope="col"></th><th scope="col">Repair paid</th><th scope="col">Repair not paid yet</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Money received</th><td>৳ 5,000</td><td>৳ 5,000</td></tr>
+            <tr><th scope="row">Money paid</th><td>৳ 1,500</td><td>৳ 0</td></tr>
+            <tr class="tot"><th scope="row">Net cash movement</th><td>৳ 3,500</td><td>৳ 5,000</td></tr>
+            <tr><th scope="row">Unpaid expenses</th><td>৳ 0</td><td>৳ 1,500</td></tr>
+            <tr><th scope="row">Profit</th><td>৳ 5,500</td><td>৳ 5,500</td></tr>
+          </tbody>
+        </table>
+        <p class="st-note">Profit is the same in both cases; only cash changes.</p>
+      </div>
+    </figure>
+
+    <dl class="concepts"><div class="concept c-earn"><dt>Earned income</dt><dd>What the vehicle earned for its days — paid or not.</dd></div><div class="concept c-got"><dt>Money received</dt><dd>Cash or transfers that actually reached you. Settles income; never adds to it.</dd></div><div class="concept c-due"><dt>Still to collect</dt><dd>Income − money applied to it.</dd></div><div class="concept c-exp"><dt>Expenses</dt><dd>Owner’s costs, on the day the work happened.</dd></div><div class="concept c-pay"><dt>Money paid</dt><dd>Payments for expenses, on the day money left your hands.</dd></div><div class="concept c-profit"><dt>Profit</dt><dd>Earned income − expenses.</dd></div><div class="concept c-cash"><dt>Net cash movement</dt><dd>Money received − money paid. Not a cash balance.</dd></div><div class="concept c-adj"><dt>Non-cash adjustments</dt><dd>“Adjust against rent” and rent waivers change dues without moving cash.</dd></div></dl>
+
+    <div class="adj-grid">
+      <article class="adj">
+        <h3>Driver paid an owner’s repair</h3>
+        <p>Rent ৳ 7,000. The driver paid a ৳ 1,000 repair from their own money and hands over ৳ 6,000 cash. You record “Adjust against rent” for ৳ 1,000.</p>
+        <ul class="kv">
+          <li><span>Profit</span><b>৳ 6,000</b></li>
+          <li><span>Money received</span><b>৳ 6,000</b></li>
+          <li><span>Money paid</span><b>৳ 0</b></li>
+          <li><span>Rent due / owed to driver</span><b>৳ 0</b></li>
+        </ul>
+        <a class="more-link" href="/bahon-boi/guide/rent-adjustments/">Read the guide <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+      <article class="adj">
+        <h3>Part of the rent waived later</h3>
+        <p>Rent ৳ 1,000, the driver paid ৳ 700, and you later agree to waive ৳ 300 with “Reduce / waive rent”.</p>
+        <ul class="kv">
+          <li><span>Earned income from the date agreed</span><b>৳ 700</b></li>
+          <li><span>Due</span><b>৳ 0</b></li>
+          <li><span>Cash recorded for the waiver</span><b>৳ 0</b></li>
+        </ul>
+        <a class="more-link" href="/bahon-boi/guide/rent-adjustments/">Read the guide <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+    </div>
+    <p class="center"><a class="more-link" href="/bahon-boi/guide/profit-and-cash/">All money rules, with more examples <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+  </div>
+</section>
+<section class="section backup" id="backup" aria-labelledby="bk-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Backup and restore</p>
+      <h2 id="bk-title">Protect your records — set it up on day one</h2>
+      <p class="lede">Records live on your phone. Backups go to a folder you choose on the phone, so copying that folder somewhere else is what protects you if the phone is lost.</p>
+    </div>
+    <figure class="art-fig wide"><svg class="ill " viewBox="0 0 560 210" role="img" aria-labelledby="bf-t-en bf-d-en" xmlns="http://www.w3.org/2000/svg"><title id="bf-t-en">How backup and restore work</title><desc id="bf-d-en">Four steps: 1, the app saves backups on the phone; 2, into the BahonBoi Backups folder you chose; 3, you copy that folder off the phone to a computer or USB drive; 4, on a new phone you copy it back and use Restore existing data.</desc><g transform="translate(4 30)"><rect class="s-card" width="118" height="150" rx="16"/><circle class="s-accent-f" cx="22" cy="22" r="13"/><text class="s-on-accent" x="22" y="27" font-size="13" font-weight="700" text-anchor="middle">1</text><g transform="translate(35 40)" class="s-icon"><rect x="10" y="0" width="28" height="48" rx="6"/><path d="M20 41h8"/></g><text class="s-ink" x="59" y="116" font-size="12.5" font-weight="600" text-anchor="middle">Bahon Boi</text><text class="s-muted" x="59" y="134" font-size="11" text-anchor="middle">backs up daily</text></g><path class="s-arrow" d="M124 105h18m-6-6 6 6-6 6"/><g transform="translate(146 30)"><rect class="s-card" width="118" height="150" rx="16"/><circle class="s-accent-f" cx="22" cy="22" r="13"/><text class="s-on-accent" x="22" y="27" font-size="13" font-weight="700" text-anchor="middle">2</text><g transform="translate(35 40)" class="s-icon"><path d="M2 10h18l5 6h21v28H2z"/><path d="M14 30h20"/></g><text class="s-ink" x="59" y="116" font-size="12.5" font-weight="600" text-anchor="middle">BahonBoi Backups</text><text class="s-muted" x="59" y="134" font-size="11" text-anchor="middle">folder you chose</text></g><path class="s-arrow" d="M266 105h18m-6-6 6 6-6 6"/><g transform="translate(288 30)"><rect class="s-card" width="118" height="150" rx="16"/><circle class="s-accent-f" cx="22" cy="22" r="13"/><text class="s-on-accent" x="22" y="27" font-size="13" font-weight="700" text-anchor="middle">3</text><g transform="translate(35 40)" class="s-icon"><rect x="2" y="4" width="44" height="30" rx="3"/><path d="M14 44h20M24 34v10"/></g><text class="s-ink" x="59" y="116" font-size="12.5" font-weight="600" text-anchor="middle">Copy off the phone</text><text class="s-muted" x="59" y="134" font-size="11" text-anchor="middle">computer or USB</text></g><path class="s-arrow" d="M408 105h18m-6-6 6 6-6 6"/><g transform="translate(430 30)"><rect class="s-card" width="118" height="150" rx="16"/><circle class="s-accent-f" cx="22" cy="22" r="13"/><text class="s-on-accent" x="22" y="27" font-size="13" font-weight="700" text-anchor="middle">4</text><g transform="translate(35 40)" class="s-icon"><rect x="10" y="0" width="28" height="48" rx="6"/><path d="M18 24a6 6 0 1 0 2-5M17 14v6h6"/></g><text class="s-ink" x="59" y="116" font-size="12.5" font-weight="600" text-anchor="middle">Restore</text><text class="s-muted" x="59" y="134" font-size="11" text-anchor="middle">same or new phone</text></g></svg></figure>
+    <div class="bk-grid">
+      <div class="bk-card"><h3>What the app does</h3><ul class="checks">
+        <li>After a one-time setup (Android), a data backup about once a day</li>
+        <li>Photos weekly by default, or monthly, or only on demand</li>
+        <li>“Back up now” any time; the newest 30 backups are kept</li>
+        <li>Optional recovery key to encrypt backups</li>
+      </ul></div>
+      <div class="bk-card"><h3>What you should do</h3><ul class="checks">
+        <li>Check “last backup” in Backup & Restore now and then</li>
+        <li>Recommended routine: copy the “BahonBoi Backups” folder to a computer or USB drive every week</li>
+        <li>Write the recovery key down and keep it away from the phone and the backups</li>
+      </ul></div>
+      <div class="bk-card warn"><h3>Good to know</h3><ul class="checks">
+        <li>Normal backups are not encrypted</li>
+        <li>Lose the key and the app installation, and a protected backup cannot be opened</li>
+        <li>Restore replaces the phone’s records; it does not merge</li>
+        <li>Folder backup is not available on iPhone</li>
+      </ul></div>
+    </div>
+    <p class="center"><a class="more-link" href="/bahon-boi/guide/backup-restore/">Step-by-step backup and restore guide <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+  </div>
+</section>
+<section class="section section-alt privacy-sec" id="privacy" aria-labelledby="pv-title">
+  <div class="wrap pv-grid">
+    <div>
+      <p class="eyebrow">Offline use and privacy</p>
+      <h2 id="pv-title">Your accounts stay with you</h2>
+      <p>Everything you record works without internet. There is no account, no advertising and no analytics or crash-reporting service in the current version, and your records are not sent to the developer. When the phone is online, the app only downloads a small public file to check for a newer version.</p>
+      <p>Being offline does not make a phone risk-free. Records — including drivers’ ID details — are only as safe as your phone and your backup files.</p>
+      <a class="more-link" href="/bahon-boi/privacy/">Read the Privacy Policy <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ul class="pv-list">
+      <li><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/><path d="M3 3l18 18"/></svg><div><b>Works offline</b><span>Recording, reports, documents, the guide and backups need no internet.</span></div></li>
+      <li><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><div><b>Stored on your phone</b><span>In the app’s private storage; photos are resized copies.</span></div></li>
+      <li><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h7l2 2h9v11H3z"/></svg><div><b>Backups where you choose</b><span>If that folder syncs to a cloud service, that service’s terms apply.</span></div></li>
+      <li><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><div><b>Your part</b><span>Use a screen lock, keep backup copies, and keep any recovery key private.</span></div></li>
+    </ul>
+  </div>
+</section>
+<section class="section-tight guide-teaser" aria-labelledby="gt-title">
+  <div class="wrap gt-box">
+    <div><h2 id="gt-title">A complete user guide</h2>
+    <p>Eleven illustrated topics with the app’s real button names, numbered steps, worked examples and how to fix mistakes.</p></div>
+    <a class="btn btn-primary" href="/bahon-boi/guide/"><svg class="ico-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg> Open the guide</a>
+  </div>
+</section>
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq-wrap">
+    <div class="section-head">
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-title">Common questions</h2>
+    </div>
+    <div class="faq"><details><summary>Where can I get the app?</summary><div><p>Bahon Boi has not been published in any app store yet. When it is, the download link will appear on this page.</p></div></details><details><summary>Is money from a driver added as new income?</summary><div><p>No. Income is recorded once, as its own entry. When the driver pays, you record money received and link it to that income, so the due goes down. Money received never adds income, and you cannot apply more than an entry’s due — extra money must be kept as an advance.</p></div></details><details><summary>Are daily rent and trip income recorded the same way?</summary><div><p>No. For daily rent you enter a daily rate and the amount fills in as rate × days. For trip-based income you enter the actual amount earned and, optionally, the number of trips. Fixed contracts and other income are separate types too.</p></div></details><details><summary>Which month does a late bill count in?</summary><div><p>An expense counts in profit on the day the work happened; the payment counts in cash on the day you paid. If you enter something with an old date, reports recalculate.</p></div></details><details><summary>Where are my records kept? Do I need an account?</summary><div><p>No account is needed. Records are kept on your phone in the app’s own storage, and the app works without internet. Records are not sent to the developer.</p></div></details><details><summary>What happens if I lose my phone?</summary><div><p>Only what you backed up and copied off the phone can be restored. Set up Backup & Restore on day one, copy the “BahonBoi Backups” folder to a computer or USB drive regularly, and keep any recovery key somewhere else. Without a backup copy, records on a lost phone cannot be recovered.</p></div></details><details><summary>Do I get a phone notification before a document expires?</summary><div><p>Not yet. Expired and expiring documents appear inside the app — on the Home screen’s bell and alert strip and on the vehicle screen.</p></div></details><details><summary>Can several owners share one vehicle?</summary><div><p>Yes, as records: each owner’s contribution and share are kept. Owners do not get separate logins, and the app does not split profit between them.</p></div></details><details><summary>Can I use Bahon Boi on a computer or online?</summary><div><p>No. Bahon Boi is a mobile app. This website only explains it; you cannot keep accounts here.</p></div></details></div>
+  </div>
+</section>
+<section class="section-tight" id="support" aria-labelledby="cta-title">
+  <div class="wrap cta-box">
+    <img src="/bahon-boi/assets/logo-320.webp" width="88" height="88" alt="" loading="lazy">
+    <div>
+      <h2 id="cta-title">Coming soon to Google Play</h2>
+      <p>Questions or suggestions? Email <a href="mailto:hello@munna.dev?subject=Bahon%20Boi">hello@munna.dev</a></p>
+      <ul class="pill-links">
+        <li><a href="/bahon-boi/contact/">Contact & support</a></li>
+        <li><a href="/bahon-boi/terms/">Terms</a></li>
+        <li><a href="/bahon-boi/privacy/">Privacy Policy</a></li>
+        <li><a href="/">All apps</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <img src="/bahon-boi/assets/favicon-48.png" width="40" height="40" alt="">
+        <p>Bahon Boi — every vehicle’s accounts, in one book.</p>
+      </div>
+      <div><h2>Bahon Boi</h2><ul>
+      <li><a href="/bahon-boi/">Overview</a></li>
+      <li><a href="/bahon-boi/#features">Features</a></li>
+      <li><a href="/bahon-boi/guide/">User guide</a></li>
+      <li><a href="/bahon-boi/#faq">FAQ</a></li></ul></div><div><h2>Help & legal</h2><ul>
+      <li><a href="/bahon-boi/contact/">Contact</a></li>
+      <li><a href="/bahon-boi/terms/">Terms and Conditions</a></li>
+      <li><a href="/bahon-boi/privacy/">Privacy Policy</a></li></ul></div><div><h2>More</h2><ul>
+      <li><a href="/">All apps</a></li>
+      <li><a href="mailto:hello@munna.dev">Email: hello@munna.dev</a></li>
+      <li><a href="https://munna.dev" rel="noopener">Developer website</a></li></ul></div>
+    </div>
+    <p class="copy">&copy; 2026 <span lang="en">Md. Risul Islam Munna</span> · Independent apps made in Dhaka, Bangladesh.</p>
+  </div>
+</footer>
+</template>
+<script type="application/json" id="lang-data">{"scope":"bahonBoi","key":"bahonBoi.language","def":"bn","keys":{"munnaApps":"munnaApps.language","bahonBoi":"bahonBoi.language"},"meta":{"en":{"title":"Bahon Boi — vehicle income, expense, driver and document accounts","description":"Bahon Boi helps owners of buses, cars, CNGs, auto-rickshaws, trucks and pickups in Bangladesh track earned income, money received, dues, expenses, profit, drivers and document expiry — offline, in Bengali or English.","locale":"en_US","image":"https://apps.munna.dev/bahon-boi/assets/og-cover-en.png"},"bn":{"title":"বাহন বই — গাড়ির আয়-খরচ, চালক ও কাগজপত্রের হিসাব","description":"বাহন বই: বাস, প্রাইভেট কার, সিএনজি, অটোরিকশা, ট্রাক ও পিকআপ মালিকদের জন্য আয়, আদায়, বাকি, খরচ, লাভ, চালক ও কাগজের মেয়াদের হিসাব — অফলাইনে, বাংলায় বা ইংরেজিতে।","locale":"bn_BD","image":"https://apps.munna.dev/bahon-boi/assets/og-cover.png"}}}</script>
+<script src="/assets/lang.js"></script>
 </body>
 </html>

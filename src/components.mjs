@@ -64,7 +64,7 @@ export const legalLinks = (lang, appPath, current) => {
     ['contact', L('Contact', 'যোগাযোগ')],
   ];
   return `<ul class="pill-links">${items
-    .map(([k, lab]) => `<li><a href="${appPath(lang, k)}"${k === current ? ' aria-current="page"' : ''}>${t(lab, lang)}</a></li>`)
+    .map(([k, lab]) => `<li><a href="${appPath(k)}"${k === current ? ' aria-current="page"' : ''}>${t(lab, lang)}</a></li>`)
     .join('')}</ul>`;
 };
 

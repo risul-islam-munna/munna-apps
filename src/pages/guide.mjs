@@ -9,9 +9,9 @@ import { assignmentTimeline, reportChart, docTimeline, backupFlow } from '../svg
 const FIGURES = { assignment: assignmentTimeline, chart: reportChart, docs: docTimeline, backup: backupFlow };
 
 const crumbs = (lang, extra = []) => [
-  [HUB[lang], L('Apps', 'অ্যাপস')],
-  [APP[lang], L('Bahon Boi', 'বাহন বই')],
-  [guidePath(lang), L('User guide', 'ব্যবহার নির্দেশিকা')],
+  [HUB, L('Apps', 'অ্যাপস')],
+  [APP, L('Bahon Boi', 'বাহন বই')],
+  [guidePath(), L('User guide', 'ব্যবহার নির্দেশিকা')],
   ...extra,
 ];
 
@@ -24,7 +24,7 @@ export function guideIndex(lang) {
       <ul class="topic-list">${gr.topics
         .map((slug) => {
           const tp = TOPICS[slug];
-          return `<li><a href="${guidePath(lang, slug)}"><span class="ico">${icon(tp.icon)}</span><span><b>${t(tp.title, lang)}</b><span>${t(tp.summary, lang)}</span></span></a></li>`;
+          return `<li><a href="${guidePath(slug)}"><span class="ico">${icon(tp.icon)}</span><span><b>${t(tp.title, lang)}</b><span>${t(tp.summary, lang)}</span></span></a></li>`;
         })
         .join('')}</ul>
     </section>`,
@@ -68,7 +68,7 @@ export function guideTopic(lang, slug) {
   const tp = TOPICS[slug];
   const i = GUIDE_TOPICS.indexOf(slug);
   const prev = GUIDE_TOPICS[i - 1], next = GUIDE_TOPICS[i + 1];
-  const items = crumbs(lang, [[guidePath(lang, slug), tp.title]]);
+  const items = crumbs(lang, [[guidePath(slug), tp.title]]);
   const list = (arr, cls = '') => `<ul class="${cls}">${arr.map((x) => `<li>${esc(t(x, lang))}</li>`).join('')}</ul>`;
   const sec = (id, title, html) => `<section class="gt-sec" aria-labelledby="${id}"><h2 id="${id}">${title}</h2>${html}</section>`;
   const fig = tp.figure ? `<figure class="art-fig">${FIGURES[tp.figure](lang)}</figure>` : '';
@@ -106,11 +106,11 @@ export function guideTopic(lang, slug) {
       ${sec('fix', T('Correct or undo', 'ঠিক করা বা বাতিল'), list(tp.fix, 'checks'))}
       <section class="gt-sec related" aria-labelledby="rel">
         <h2 id="rel">${T('Related topics', 'সম্পর্কিত বিষয়')}</h2>
-        <ul class="pill-links">${tp.related.map((r) => `<li><a href="${guidePath(lang, r)}">${esc(t(TOPICS[r].title, lang))}</a></li>`).join('')}</ul>
+        <ul class="pill-links">${tp.related.map((r) => `<li><a href="${guidePath(r)}">${esc(t(TOPICS[r].title, lang))}</a></li>`).join('')}</ul>
       </section>
       <nav class="prev-next" aria-label="${T('Guide pages', 'নির্দেশিকার পেজ')}">
-        ${prev ? `<a class="pn prev" href="${guidePath(lang, prev)}"><small>${T('Previous', 'আগের')}</small>${esc(t(TOPICS[prev].title, lang))}</a>` : `<a class="pn prev" href="${guidePath(lang)}"><small>${T('Back to', 'ফিরে যান')}</small>${T('All topics', 'সব বিষয়')}</a>`}
-        ${next ? `<a class="pn next" href="${guidePath(lang, next)}"><small>${T('Next', 'পরের')}</small>${esc(t(TOPICS[next].title, lang))}</a>` : `<a class="pn next" href="${APP[lang]}"><small>${T('Back to', 'ফিরে যান')}</small>${T('Bahon Boi', 'বাহন বই')}</a>`}
+        ${prev ? `<a class="pn prev" href="${guidePath(prev)}"><small>${T('Previous', 'আগের')}</small>${esc(t(TOPICS[prev].title, lang))}</a>` : `<a class="pn prev" href="${guidePath()}"><small>${T('Back to', 'ফিরে যান')}</small>${T('All topics', 'সব বিষয়')}</a>`}
+        ${next ? `<a class="pn next" href="${guidePath(next)}"><small>${T('Next', 'পরের')}</small>${esc(t(TOPICS[next].title, lang))}</a>` : `<a class="pn next" href="${APP}"><small>${T('Back to', 'ফিরে যান')}</small>${T('Bahon Boi', 'বাহন বই')}</a>`}
       </nav>
     </article>
   </div>

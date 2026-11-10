@@ -131,7 +131,7 @@ function legalPage(lang, kind) {
   const T = (en, bn) => t(L(en, bn), lang);
   const isPrivacy = kind === 'privacy';
   const title = isPrivacy ? L('Privacy Policy', 'গোপনীয়তা নীতি') : L('Terms and Conditions', 'শর্তাবলি');
-  const items = [[HUB[lang], L('Apps', 'অ্যাপস')], [APP[lang], L('Bahon Boi', 'বাহন বই')], [appPath(lang, kind), title]];
+  const items = [[HUB, L('Apps', 'অ্যাপস')], [APP, L('Bahon Boi', 'বাহন বই')], [appPath(kind), title]];
   const sections = (isPrivacy ? PRIVACY : TERMS)
     .map(([h, blocks]) => `<h2>${t(h, lang)}</h2>${renderBlocks(blocks, lang)}`)
     .join('');
@@ -167,7 +167,7 @@ export const termsPage = (lang) => legalPage(lang, 'terms');
 
 export function contactPage(lang) {
   const T = (en, bn) => t(L(en, bn), lang);
-  const items = [[HUB[lang], L('Apps', 'অ্যাপস')], [APP[lang], L('Bahon Boi', 'বাহন বই')], [appPath(lang, 'contact'), L('Contact', 'যোগাযোগ')]];
+  const items = [[HUB, L('Apps', 'অ্যাপস')], [APP, L('Bahon Boi', 'বাহন বই')], [appPath('contact'), L('Contact', 'যোগাযোগ')]];
   const body = `<section class="section-tight">
   <div class="wrap">
     ${breadcrumb(lang, items)}
@@ -201,7 +201,7 @@ export function contactPage(lang) {
       </div>
     </div>
     <div class="help-band">
-      <p>${T('Many answers are already in the', 'অনেক প্রশ্নের উত্তর আছে')} <a href="${appPath(lang, 'guide')}">${T('user guide', 'ব্যবহার নির্দেশিকায়')}</a> ${T('and the', 'এবং')} <a href="${APP[lang]}#faq">${T('FAQ', 'প্রশ্নোত্তরে')}</a>. ${T('The same guide is inside the app: Menu (☰) → App guide.', 'একই নির্দেশিকা অ্যাপেও আছে: মেনু (☰) → অ্যাপ ব্যবহারের নির্দেশিকা।')}</p>
+      <p>${T('Many answers are already in the', 'অনেক প্রশ্নের উত্তর আছে')} <a href="${appPath('guide')}">${T('user guide', 'ব্যবহার নির্দেশিকায়')}</a> ${T('and the', 'এবং')} <a href="${APP}#faq">${T('FAQ', 'প্রশ্নোত্তরে')}</a>. ${T('The same guide is inside the app: Menu (☰) → App guide.', 'একই নির্দেশিকা অ্যাপেও আছে: মেনু (☰) → অ্যাপ ব্যবহারের নির্দেশিকা।')}</p>
       <p class="muted">${T('Developer', 'ডেভেলপার')}: <span lang="en">Md. Risul Islam Munna</span> · <a href="https://munna.dev" rel="noopener">munna.dev</a> · <a href="https://www.facebook.com/munna.dev.bd/" rel="noopener">Facebook</a> · <a href="https://www.linkedin.com/in/risul-islam-munna/" rel="noopener">LinkedIn</a></p>
     </div>
     ${legalLinks(lang, appPath, 'contact')}
@@ -214,7 +214,7 @@ export function contactPage(lang) {
     current: 'contact',
     jsonld: {
       '@context': 'https://schema.org',
-      '@graph': [{ '@type': 'ContactPage', url: SITE + appPath(lang, 'contact'), inLanguage: lang }, breadcrumbLd(SITE, items, lang)],
+      '@graph': [{ '@type': 'ContactPage', url: SITE + appPath('contact'), inLanguage: lang }, breadcrumbLd(SITE, items, lang)],
     },
   };
 }
@@ -247,13 +247,13 @@ export function notFoundHtml() {
         <p class="eyebrow">404</p>
         <h1>This page is not in the book</h1>
         <p class="lede">The page you are looking for does not exist or has moved. Web addresses are case-sensitive.</p>
-        <div class="btn-row"><a class="btn btn-primary" href="/">All apps</a><a class="btn btn-ghost" href="/bahon-boi/en/">Bahon Boi</a><a class="btn btn-ghost" href="/bahon-boi/en/guide/">User guide</a></div>
+        <div class="btn-row"><a class="btn btn-primary" href="/">All apps</a><a class="btn btn-ghost" href="/bahon-boi/">Bahon Boi</a><a class="btn btn-ghost" href="/bahon-boi/guide/">User guide</a></div>
       </div>
       <div lang="bn">
         <p class="eyebrow">৪০৪</p>
         <h2 class="nf-h">এই পাতাটি বইয়ে নেই</h2>
         <p class="lede">যে পেজ খুঁজছেন সেটি নেই বা সরানো হয়েছে। ঠিকানায় বড়-ছোট হাতের অক্ষর ঠিক আছে কি না দেখে নিন।</p>
-        <div class="btn-row"><a class="btn btn-primary" href="/bn/">সব অ্যাপ</a><a class="btn btn-ghost" href="/bahon-boi/">বাহন বই</a><a class="btn btn-ghost" href="/bahon-boi/guide/">ব্যবহার নির্দেশিকা</a></div>
+        <div class="btn-row"><a class="btn btn-primary" href="/">সব অ্যাপ</a><a class="btn btn-ghost" href="/bahon-boi/">বাহন বই</a><a class="btn btn-ghost" href="/bahon-boi/guide/">ব্যবহার নির্দেশিকা</a></div>
       </div>
     </div>
   </section>

@@ -130,13 +130,17 @@ const ogImageFor = (area, lang, custom) =>
     : lang === 'en' ? '/bahon-boi/assets/og-cover-en.png' : '/bahon-boi/assets/og-cover.png');
 
 /** Everything inside <body> that changes with the language. */
+// Wrapped in <!--email_off--> so Cloudflare Email Address Obfuscation leaves
+// these regions alone: its decoder only sees the live DOM, so an obfuscated
+// address inside the inactive-language <template> would show as
+// "[email protected]" after a language switch (verified on production).
 export function region(lang, area, c) {
-  return `<a class="skip-link" href="#main">${t(UI.skip, lang)}</a>
+  return `<!--email_off--><a class="skip-link" href="#main">${t(UI.skip, lang)}</a>
 ${header(lang, area, c.current)}
 <main id="main">
 ${c.body}
 </main>
-${footer(lang, area)}`;
+${footer(lang, area)}<!--/email_off-->`;
 }
 
 /**

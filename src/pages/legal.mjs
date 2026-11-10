@@ -237,6 +237,7 @@ export function notFoundHtml() {
 <link rel="stylesheet" href="/assets/site.css">
 </head>
 <body class="hub">
+<!--email_off-->
 <header class="site-header"><div class="wrap header-row">
   <a class="brand" href="/" aria-label="apps.munna.dev"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span><b>apps.munna.dev</b></span></a>
 </div></header>
@@ -259,6 +260,7 @@ export function notFoundHtml() {
   </section>
 </main>
 <footer class="site-footer"><div class="wrap"><p class="copy">&copy; 2026 Md. Risul Islam Munna · <a href="mailto:hello@munna.dev">hello@munna.dev</a></p></div></footer>
+<!--/email_off-->
 </body>
 </html>
 `;

@@ -59,7 +59,7 @@ scope (`src/routes.mjs` → `SCOPES` / `AREAS`, passed to `page()` in `src/layou
 ## Project structure
 
 ```
-build.mjs                 generator + checks (node build.mjs --check)
+build.mjs                 generator + checks (--release / --check) + asset versioning
 src/
   lib.mjs                 L(en, bn) bilingual strings, money/digit formatting, checks
   routes.mjs              canonical routes, language scopes/defaults, legacy redirects
@@ -81,18 +81,22 @@ CNAME .nojekyll robots.txt site.webmanifest sitemap.xml (generated)
 ## Local preview (Laravel Herd)
 
 `~/Herd` is a parked Herd path, so the site is served at **http://munna-apps.test/** with no setup.
-After any change:
+Commands (Herd's Node works: `~/Library/Application Support/Herd/config/nvm/…`):
 
 ```sh
 cd /Users/munna/Herd/munna-apps
-node build.mjs --check      # Herd's Node works: ~/Library/Application Support/Herd/config/nvm/…
+node build.mjs              # while editing: regenerate with the current release id
+node build.mjs --check      # read-only validation (never writes, never mints an id)
+node build.mjs --release    # RELEASE: new release id + build + all checks — run before every publishing commit
 ```
 
 Herd quirks (production behaves correctly): unknown paths fall back to the home page instead of
 `404.html`, and macOS file names are case-insensitive. For production-like behaviour use
 `python3 -m http.server 8766` and open `http://localhost:8766/`.
 
-`--check` fails on broken internal links/assets, missing `#anchors`, duplicate ids (per language),
+`--check` fails when the committed output is stale (sources changed but not rebuilt), when versioned
+CSS/JS changed since the recorded release (`assets/release.json`) — i.e. `--release` was skipped — on
+unversioned/stale asset URLs, broken internal links/assets, missing `#anchors`, duplicate ids (per language),
 section ids that differ between languages, links to legacy language URLs, `hreflang`, or stray HTML,
 and warns about English text in the Bengali version or Bengali text in the English version of a page.
 
@@ -154,14 +158,59 @@ and rebuild.
 2. Create `src/pages/<slug>.mjs` (+ its own legal/contact text — never reuse another app's policy).
 3. Register the pages in `build.mjs`, add assets under `/<slug>/assets/`, a card on the hub, and
    an accent class in `site.css`.
-4. `node build.mjs --check`.
+4. `node build.mjs --release` (or `node build.mjs --check` to validate without writing).
 
-## Deployment (not done — needs separate authorization)
+## Releasing and caching
+
+**Release command** (GitHub Pages serves the committed files as-is — nothing builds on GitHub, so the
+build must run before the commit):
+
+```sh
+node build.mjs --release && git add -A && git commit -m "Release …"   # then push (when authorized)
+```
+
+**Asset versioning.** `/assets/site.css`, `/assets/site.js` and `/assets/lang.js` are referenced as
+`…?v=<release id>` on every generated page (404 included), keeping any existing query/#fragment. The id is
+minted once per `--release` run: `RELEASE_ID` from the environment if a deployment provides one, else the
+build's UTC timestamp (e.g. `20261110T202221Z`; a second release in the same second gets a suffix). It is
+stored with the assets' SHA-256 prefixes in `assets/release.json`; plain builds and `--check` reuse it, so
+validation never changes files. The id changes when the **release build runs**, not when `git push` runs —
+pushing output built with an old id keeps the old asset URLs (and `--check` fails if CSS/JS changed). The
+scripts import nothing else; fonts are external; images keep their own paths. No service worker exists.
+
+**Why this was needed (diagnosed 2026-11-10).** After the second push, production HTML and `lang.js` were
+new (Last-Modified 20:15) but Cloudflare's edge still answered `/assets/site.css` and `site.js` from cache
+(`cf-cache-status: HIT`, Last-Modified 14:20 = first release) while GitHub's origin already had the new
+files. GitHub Pages sends `Cache-Control: max-age=14400` for CSS/JS, so the edge and browsers may keep an
+unversioned asset for up to 4 h. New HTML + old `site.css` (no styles for the button language switch or the
+hero) = the broken layout. Versioned URLs make each release fetch its own copy.
+
+**HTML cache limit.** HTML must be current for new asset URLs to be seen. GitHub Pages sends
+`Cache-Control: max-age=600` for HTML (not configurable on Pages; `_headers` files and `<meta>` tags do not
+change CDN caching), so a browser can show the previous release's page for up to ~10 minutes. Cloudflare
+currently does not cache the HTML (`cf-cache-status: DYNAMIC`) — keep it that way.
+
+**Cloudflare settings (recommended; not changed by this repo — needs dashboard access):**
+- Caching → Configuration → *Caching level: Standard* (query string is part of the cache key — verified:
+  `?v=test1` was MISS, then HIT). Do **not** use *Ignore Query String*, and do not add a Cache Rule that
+  ignores the query string for `/assets/*`.
+- Do **not** add a *Cache Everything* rule for HTML with a long Edge TTL. If HTML caching is ever wanted,
+  use a short Edge TTL and purge the changed HTML URLs (not the whole zone) after each release.
+- Optional: a Cache Rule for `apps.munna.dev/assets/*.css|*.js` with a long Edge/Browser TTL is safe now
+  that URLs are versioned.
+- Scrape Shield → *Email Address Obfuscation*: it currently rewrites `mailto:` links and injects
+  `email-decode.min.js`; its decoder misses the inactive-language `<template>`, so after a language switch the
+  address showed as "[email protected]". The generated regions are wrapped in `<!--email_off-->`, which
+  Cloudflare honours; turning the feature off is the simpler alternative (also helps no-JS visitors).
+- After this change is first deployed, purge `/assets/site.css`, `/assets/site.js`, `/assets/lang.js` (the
+  old unversioned URLs) once, for anyone still loading an old cached page. Never purge on every visit.
+
+## Deployment
 
 Same model as games.munna.dev: GitHub Pages → *Deploy from a branch* → `main`, `/ (root)`;
 `CNAME` (`apps.munna.dev`) and `.nojekyll` are present. Cloudflare DNS: `CNAME apps →
 <github-user>.github.io`, DNS-only until GitHub issues the certificate, then *Enforce HTTPS*
-(and *Full (strict)* if proxied). Always run `node build.mjs --check` and commit the generated HTML
+(and *Full (strict)* if proxied). Always run `node build.mjs --release` and commit the generated HTML
 before pushing. Then submit `https://apps.munna.dev/sitemap.xml` in Search Console.
 
 ## Before publication

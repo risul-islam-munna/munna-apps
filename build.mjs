@@ -1,12 +1,21 @@
 #!/usr/bin/env node
 // Static site generator for apps.munna.dev. No dependencies (Node 18+).
-//   node build.mjs          build every page into the repository root
-//   node build.mjs --check  build, then fail on broken links/anchors or language leaks
+//   node build.mjs --release  RELEASE BUILD: new release id, write everything, run all checks.
+//                             Run this before every commit that will be published.
+//   node build.mjs            write everything with the current release id (local editing)
+//   node build.mjs --check    read-only: render in memory, fail if the committed output is
+//                             stale, assets changed without a new release id, or checks fail
 //
 // Output is plain HTML committed at the repo root, so GitHub Pages "deploy from
 // branch" keeps working unchanged.
+//
+// Asset versioning: first-party CSS/JS references get ?v=<release id> (see
+// VERSIONED). The id is minted once per release build — RELEASE_ID from the
+// environment when a deployment provides one, else the build's UTC timestamp —
+// and recorded with the assets' content hashes in assets/release.json.
 
 import { mkdirSync, writeFileSync, readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -19,7 +28,52 @@ import { guideIndex, guideTopic } from './src/pages/guide.mjs';
 import { privacyPage, termsPage, contactPage, notFoundHtml } from './src/pages/legal.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
-const TODAY = new Date().toISOString().slice(0, 10);
+const ARGS = process.argv.slice(2);
+const RELEASE = ARGS.includes('--release');
+const CHECK_ONLY = ARGS.includes('--check') && !RELEASE; // read-only validation
+const RUN_CHECKS = CHECK_ONLY || RELEASE;
+
+// ------------------------------------------------------------------ release id
+// First-party assets whose URLs carry ?v=<release id>. (They import nothing
+// else; fonts are external, images keep their own file names.)
+const VERSIONED = ['/assets/site.css', '/assets/site.js', '/assets/lang.js'];
+const MANIFEST = join(ROOT, 'assets', 'release.json');
+const sha = (file) => createHash('sha256').update(readFileSync(file)).digest('hex').slice(0, 16);
+const assetHashes = () => Object.fromEntries(VERSIONED.map((u) => [u, sha(join(ROOT, u))]));
+const readManifest = () => {
+  try { return JSON.parse(readFileSync(MANIFEST, 'utf8')); } catch { return null; }
+};
+const preErrors = [];
+let release = readManifest();
+if (RELEASE || (!release && !CHECK_ONLY)) {
+  const now = new Date();
+  const fromEnv = (process.env.RELEASE_ID || '').trim();
+  const id = (fromEnv || now.toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z')).replace(/[^A-Za-z0-9._-]/g, '-').slice(0, 64);
+  const prev = release && release.id;
+  // never reuse the previous id (two release builds within one second)
+  const unique = id === prev && !fromEnv ? `${id}-${Date.now() % 1000}` : id;
+  release = { id: unique, builtAt: now.toISOString(), assets: assetHashes() };
+  console.log(`Release id: ${unique}${fromEnv ? ' (from RELEASE_ID)' : ' (build timestamp)'}`);
+} else if (!release) {
+  preErrors.push('assets/release.json is missing — run `node build.mjs --release`');
+  release = { id: 'missing', builtAt: new Date(0).toISOString(), assets: {} };
+} else {
+  const now = assetHashes();
+  const changed = VERSIONED.filter((u) => now[u] !== release.assets[u]);
+  if (changed.length) {
+    const m = `${changed.join(', ')} changed since release ${release.id} — run \`node build.mjs --release\` before publishing`;
+    if (CHECK_ONLY) preErrors.push(m); else console.warn('WARN  ' + m);
+  }
+}
+const RELEASE_ID = release.id;
+const RELEASE_DATE = release.builtAt.slice(0, 10);
+
+/** Add ?v=<release id> to references of VERSIONED assets, keeping any existing
+ *  query and #fragment. */
+const versionAssets = (html) =>
+  html.replace(/(\s(?:href|src)=")(\/assets\/[\w.-]+\.(?:css|js))(\?[^"#]*)?(#[^"]*)?"/g, (all, pre, path, q, frag) =>
+    VERSIONED.includes(path) ? `${pre}${path}?${q ? q.slice(1) + '&' : ''}v=${RELEASE_ID}${frag || ''}"` : all,
+  );
 
 // ------------------------------------------------------------------ route table
 // One canonical URL per page. Each page is rendered in both languages into the
@@ -36,14 +90,14 @@ add('app', appPath('terms'), termsPage, false);
 add('app', appPath('privacy'), privacyPage, false);
 
 // ------------------------------------------------------------------ write
+const out = new Map(); // file → generated content (written at the end unless --check)
 const written = new Set();
 const regions = new Map(); // file → { en, bn } rendered language regions (for checks)
 const legacyFiles = new Set();
 const fileOf = (urlPath) => join(ROOT, urlPath.endsWith('/') ? urlPath + 'index.html' : urlPath);
 function write(urlPath, html) {
   const file = fileOf(urlPath);
-  mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, html);
+  out.set(file, versionAssets(html));
   written.add(file);
   return file;
 }
@@ -68,10 +122,10 @@ const urls = pages
   .map(
     (p) => `  <url>
     <loc>${SITE + p.path}</loc>
-    <lastmod>${TODAY}</lastmod>
+    <lastmod>${RELEASE_DATE}</lastmod>
   </url>`,
   );
-writeFileSync(
+out.set(
   join(ROOT, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -80,7 +134,25 @@ ${urls.join('\n')}
 </urlset>
 `,
 );
-console.log(`Built ${written.size} HTML files (${pages.length} pages, ${legacyFiles.size} legacy redirects, 404) + sitemap.xml (${urls.length} URLs).`);
+out.set(MANIFEST, JSON.stringify(release, null, 2) + '\n');
+
+let stale = [];
+if (CHECK_ONLY) {
+  for (const [file, content] of out) {
+    let disk = null;
+    try { disk = readFileSync(file, 'utf8'); } catch { /* missing */ }
+    if (disk !== content) stale.push(file.slice(ROOT.length));
+  }
+} else {
+  for (const [file, content] of out) {
+    let disk = null;
+    try { disk = readFileSync(file, 'utf8'); } catch { /* new */ }
+    if (disk === content) continue; // keep unchanged files untouched
+    mkdirSync(dirname(file), { recursive: true });
+    writeFileSync(file, content);
+  }
+}
+console.log(`${CHECK_ONLY ? 'Rendered (read-only)' : 'Built'} ${written.size} HTML files (${pages.length} pages, ${legacyFiles.size} legacy redirects, 404) + sitemap.xml (${urls.length} URLs).`);
 
 // ------------------------------------------------------------------ app config
 // /app-config/*.json are hand-edited static files the apps read for update
@@ -129,10 +201,14 @@ if (configErrors) process.exit(1);
 console.log('App config: app-config/config.json and dev-config.json are valid.');
 
 // ------------------------------------------------------------------ checks
-if (process.argv.includes('--check')) {
+if (RUN_CHECKS) {
   let errors = 0, warnings = 0;
   const err = (m) => { errors++; console.error('ERROR ' + m); };
   const warn = (m) => { warnings++; console.warn('WARN  ' + m); };
+  for (const m of preErrors) err(m);
+  if (stale.length) err(`generated output is stale (${stale.length} file(s), e.g. ${stale.slice(0, 3).join(', ')}) — run \`node build.mjs --release\` (or \`node build.mjs\` if no CSS/JS changed)`);
+  console.log(`Release ${RELEASE_ID}: versioned ${VERSIONED.join(', ')}`);
+  for (const u of VERSIONED) if (!existsSync(join(ROOT, u))) err(`versioned asset missing: ${u}`);
 
   // Stray HTML: anything at the root that the build did not write.
   const walk = (d) =>
@@ -149,7 +225,7 @@ if (process.argv.includes('--check')) {
   const idsOf = (file) => {
     if (!ids.has(file)) {
       const r = regions.get(file);
-      ids.set(file, r ? idsIn(r.en) : idsIn(readFileSync(file, 'utf8')));
+      ids.set(file, r ? idsIn(r.en) : idsIn(out.get(file) ?? readFileSync(file, 'utf8')));
     }
     return ids.get(file);
   };
@@ -177,8 +253,13 @@ if (process.argv.includes('--check')) {
     }
   };
 
+  const exists = (f) => out.has(f) || existsSync(f);
   for (const file of written) {
-    const html = readFileSync(file, 'utf8');
+    const html = out.get(file);
+    // every reference to a versioned asset carries this release's id
+    for (const m of html.matchAll(/\s(?:href|src)="(\/assets\/[\w.-]+\.(?:css|js))([^"]*)"/g)) {
+      if (VERSIONED.includes(m[1]) && !new RegExp(`[?&]v=${RELEASE_ID.replace(/[.]/g, '\\.')}(&|#|$)`).test(m[2])) err(`${file.slice(ROOT.length)}: unversioned or stale asset URL ${m[1]}${m[2]}`);
+    }
     const rel = file.slice(ROOT.length);
     // internal links and assets (both languages)
     for (const m of html.matchAll(/\s(?:href|src)="(\/[^"]*)"/g)) {
@@ -186,7 +267,7 @@ if (process.argv.includes('--check')) {
       const clean = path.split('?')[0];
       if (!legacyFiles.has(file) && LEGACY_PREFIX.test(clean)) err(`${rel}: link to an old language URL ${m[1]}`);
       const target = fileOf(clean);
-      if (!existsSync(target)) { err(`${rel}: broken link ${m[1]}`); continue; }
+      if (!exists(target)) { err(`${rel}: broken link ${m[1]}`); continue; }
       if (hash && target.endsWith('.html') && !idsOf(target).has(hash)) err(`${rel}: missing anchor ${m[1]}`);
     }
     if (/hreflang=/.test(html)) err(`${rel}: hreflang alternates are not used (one URL per page)`);

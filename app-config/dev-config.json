@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-10T12:00:00Z",
+  "apps": {
+    "bahonboi": {
+      "androidAppId": "dev.munna.apps.bahonboi",
+      "published": true,
+      "minSupportedBuildNumber": 1,
+      "latestBuildNumber": 3,
+      "versions": {
+        "2": "1.1.0",
+        "3": "1.2.0-dev"
+      },
+      "androidUpdateUrl": "https://play.google.com/store/apps/details?id=dev.munna.apps.bahonboi",
+      "releaseNotes": {
+        "3": {
+          "en": "Test notes for debug builds only. This build does not exist.",
+          "bn": "শুধু ডিবাগ বিল্ডের জন্য পরীক্ষামূলক নোট। এই বিল্ডটি আসলে নেই।"
+        }
+      }
+    }
+  }
+}

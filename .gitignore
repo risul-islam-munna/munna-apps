@@ -1,0 +1,26 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+node_modules/
+
+# Never commit credentials or private data
+.env
+.env.*
+*.pem
+*.key
+*.p8
+*.jks
+*.keystore
+*service-account*.json
+*.db
+*.sqlite
+*.bbk
+backups/
+private/
+_scratch/
+
+# Local editor workspace (machine-specific paths)
+*.code-workspace

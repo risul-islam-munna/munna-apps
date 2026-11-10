@@ -1,0 +1,13 @@
+{
+  "name": "Bahon Boi — বাহন বই",
+  "short_name": "Bahon Boi",
+  "start_url": "/bahon-boi/",
+  "scope": "/bahon-boi/",
+  "display": "browser",
+  "theme_color": "#2f6f6b",
+  "background_color": "#f7f5f0",
+  "icons": [
+    { "src": "/bahon-boi/assets/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/bahon-boi/assets/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

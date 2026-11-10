@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-10T12:00:00Z",
+  "apps": {
+    "bahonboi": {
+      "androidAppId": "dev.munna.apps.bahonboi",
+      "published": false,
+      "minSupportedBuildNumber": 1,
+      "latestBuildNumber": 2,
+      "versions": {
+        "2": "1.1.0"
+      },
+      "androidUpdateUrl": "https://play.google.com/store/apps/details?id=dev.munna.apps.bahonboi",
+      "releaseNotes": {}
+    }
+  }
+}
